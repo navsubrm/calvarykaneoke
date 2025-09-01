@@ -1,0 +1,65 @@
+{
+	"id": "hero",
+	"type": "SharedSlice",
+	"name": "Hero",
+	"description": "Hero",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": "",
+			"primary": {
+				"background_image": {
+					"type": "Image",
+					"config": {
+						"label": "Background Image",
+						"constraint": {},
+						"thumbnails": []
+					}
+				},
+				"header_logo": {
+					"type": "StructuredText",
+					"config": {
+						"label": "Header Logo",
+						"placeholder": "Add JD Farag",
+						"allowTargetBlank": true,
+						"multi": "heading3,strong"
+					}
+				},
+				"title": {
+					"type": "StructuredText",
+					"config": {
+						"label": "Title",
+						"placeholder": "Bible Prophecy Updates",
+						"allowTargetBlank": true,
+						"multi": "heading1,strong"
+					}
+				},
+				"sub_title_a": {
+					"type": "StructuredText",
+					"config": {
+						"label": "Sub Title A",
+						"placeholder": "Enter Left Side Content",
+						"allowTargetBlank": true,
+						"multi": "paragraph,preformatted,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+						"labels": ["codespan", "white", "gold", "purple", "black", "svg"]
+					}
+				},
+				"sub_title_b": {
+					"type": "StructuredText",
+					"config": {
+						"label": "Sub Title B",
+						"placeholder": "Enter right side content.",
+						"allowTargetBlank": true,
+						"multi": "paragraph,strong,em,hyperlink,image,embed",
+						"labels": ["codespan", "white", "gold", "purple", "black", "svg"]
+					}
+				}
+			},
+			"items": {}
+		}
+	]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "tri_picture",
+  "type": "SharedSlice",
+  "name": "TriPicture",
+  "description": "TriPicture",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "large_image": {
+          "type": "Image",
+          "config": {
+            "label": "Large Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "large_image_link": {
+          "type": "Link",
+          "config": {
+            "label": "Large Image Link",
+            "placeholder": "Add link for large image",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "content_list": {
+          "type": "Group",
+          "config": {
+            "label": "Content List",
+            "repeat": true,
+            "fields": {
+              "content_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Content Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "content": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Content",
+                  "placeholder": "Add details for the content block",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "content_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Content Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+:root {
+	--darkness: #24211c;
+	--deep-purple: #271254cc;
+	--midnight-royal: #29213acc;
+	--dim-grey: #666666;
+	--floral-white: #f2eee5;
+	--white-smoke: whitesmoke;
+	--indian-red: #ed484bcc;
+	--white: white;
+	--dark-gold: #725414;
+	--burlywood: #c7a65e;
+	--gold: #82621f;
+	--khaki2: #d3cdc0;
+	--darkpurple: #201c29f7;
+	--dark-grey: #333;
+	--midnight-blue: #29213aa8;
+	--khaki: #d2cbbb;
+	--tan: #d7c398e3;
+	--gainsboro: #dfdfdf;
+	--white-transparent: #f5f5f536;
+	--trans-dark: #333c;
+	--passion: #251f33f2;
+	--black-trans: #24211ccc;
+}
+
+img {
+	display: inline-block;
+}
+
+:where(h1, h2, h2, h3) {
+	font-family: 'Tenor Sans', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+:where(p) {
+	font-family: 'Open Sans', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: 'wdth' 100;
+}
+
+:where(ul) {
+	margin-left: 15px;
+}
+
+.white {
+	color: var(--white);
+}
+
+.gold {
+	color: var(--gold);
+}
+
+.black {
+	color: var(--black-trans);
+}
+
+.purple {
+	color: var(--midnight-royal);
+}
+
+.light-gold {
+	color: var(--tan);
+}
+
+.align-right, .ql-align-right {
+	width: 100%;
+	text-align: right;
+	float: right;
+}
+
+.align-center, .ql-align-center {
+	width: 100%;
+	text-align: center;
+}
+

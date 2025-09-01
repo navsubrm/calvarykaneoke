@@ -1,25 +1,34 @@
 <script lang="ts">
-	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
-	import type { Props } from './utils/props.types';
+	import { page } from '$app/state';
+	import Editor from './utils/Editor.svelte';
 
-	const { slice }: Props = $props();
+	let pageData = $state(page?.data?.triPicture);
+	let primaryContent = $derived(pageData?.primaryContent);
+	let asideContent = $derived(pageData?.asideContent);
+
+	$inspect('From Try Picture: ', primaryContent, asideContent);
 </script>
 
-<section class="flex" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+<section
+	class="flex"
+	style="--_bg-upper-color: {pageData?.backgroundUpperColor?.value}; --_bg-lower-color: {pageData
+		?.backgroundLowerColor?.value}"
+>
+	<Editor bind:pageData />
 	<div class="flex container">
-		<a href={slice.primary?.large_image_link?.url} class="large-image">
-			<p>{slice.primary.large_image_link?.text}</p>
-			<PrismicImage field={slice.primary.large_image} />
+		<a href={primaryContent?.link?.href} class="large-image" title={primaryContent?.link?.alt}>
+			<p>{primaryContent?.link?.label}</p>
+			<img src={primaryContent?.image?.src} alt={primaryContent?.image?.alt} />
 		</a>
 		<div class="flex content-block-container">
-			{#each slice.primary.content_list as { content_image, content, content_link }}
+			{#each asideContent as { image, content, link }}
 				<div class="flex content-block">
-					<a href={content_link?.url} class="content-block-img-a">
-						<PrismicImage field={content_image} />
+					<a href={link.href} class="content-block-img-a" title={link.alt}>
+						<img src={image?.src} alt={link?.alt} />
 					</a>
 
 					<div class="content-details">
-						<PrismicRichText field={content} />
+						{@html JSON.parse(content)?.html}
 					</div>
 				</div>
 			{/each}
@@ -37,15 +46,16 @@
 	}
 
 	section {
+		position: relative;
 		min-height: fit-content;
 		padding-inline: 5%;
 		padding-block: 5%;
 		background-color: var(--darkness);
 		background-image: linear-gradient(
 			175deg,
-			var(--khaki) 32%,
+			var(--_bg-upper-color) 32%,
 			#d2cbbbe6 68%,
-			var(--deep-purple) 99%
+			var(--_bg-lower-color) 99%
 		);
 	}
 
@@ -117,12 +127,20 @@
 		scale: 1.02;
 	}
 
-	.content-details {
-		font-family: Arial, Helvetica, sans-serif;
+	.content-details :global(:where(h1, h2, h3, h4, h5, h5)) {
+		margin-top: 20px;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 600;
+		font-size: 17px;
+	}
+
+	.content-details :global(:where(:not(h1, h2, h3, h4, h5, h5))) {
+		font-family: 'Open Sans', sans-serif;
+		font-size: 14px;
 	}
 
 	.content-details :global(> *) {
-		line-height: 1.2;
+		line-height: 1.4;
 		margin-bottom: 10px;
 	}
 

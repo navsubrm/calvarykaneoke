@@ -35,6 +35,10 @@ p {
 	font-family: 'Open Sans', sans-serif;
 }
 
+p > a {
+	white-space: pre;
+}
+
 @media (min-width: 380px) {
 	h1 {
 		font-size: clamp(3em, 63px, 5em);

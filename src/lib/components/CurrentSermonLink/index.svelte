@@ -5,10 +5,7 @@
 	let pageData = $state(testData);
 </script>
 
-<section
-	class="container"
-	style="--_component-height: {pageData?.componentHeight}vh; --_lower-image: url({pageData?.backgroundImageUrl})"
->
+<section class="container" style="--_component-height: {pageData?.componentHeight}vh;">
 	<Editor bind:pageData />
 	<div class="upper-content-area">
 		<a href={pageData?.mainImage?.href}>

@@ -64,7 +64,7 @@
 		position: relative;
 		flex-direction: column;
 		height: var(--_component-height);
-		min-height: 30vh;
+		min-height: fit-content;
 		background: var(--darkness);
 		padding-bottom: 3em;
 	}

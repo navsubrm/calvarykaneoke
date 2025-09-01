@@ -25,7 +25,7 @@
 <svelte:window onclick={handleCloseMenu} />
 
 <header>
-	<h2>JD FARAG</h2>
+	<h4>JD FARAG</h4>
 
 	<button onclick={handleShowMenu} class="narrow btn"><Hamburger bind:active /> </button>
 
@@ -76,14 +76,15 @@
 		width: 100%;
 		background-color: var(--midnight-royal);
 		padding-block: 1em;
-		padding-inline: 0.5em;
+		padding-inline: 1em;
 		height: 70px;
 		z-index: 100;
 	}
 
-	h2 {
+	h4 {
 		color: var(--white);
 		letter-spacing: 3px;
+		font-weight: bold;
 	}
 
 	nav ul {

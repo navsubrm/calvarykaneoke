@@ -2,10 +2,12 @@
 	import { setTheme } from '$lib/config/setTheme';
 	import Hamburger from '$lib/icons/hamburger/Hamburger.svelte';
 	import Submit from '$lib/userInputs/submit/Submit.svelte';
+	import FormButton from '../button/FormButton.svelte';
 	import type { Props } from './utils/props.types';
 
 	let {
 		buttonTitle = 'Edit Content',
+		active = $bindable(false),
 		processing = $bindable(false),
 		processingLabel = $bindable('Processing...'),
 		fail = $bindable(false),
@@ -15,12 +17,13 @@
 		children,
 		onsubmit = (e: SubmitEvent) => {
 			e.preventDefault();
+		},
+		oncancel = (e: MouseEvent) => {
+			e.preventDefault();
 		}
 	}: Props = $props();
 
-	let theme = $state({ form: 'One', content: 'One' });
-	let active = $state(false);
-	const form = $state(setTheme(theme.form, 'form'));
+	const form = $state(setTheme('One', 'form'));
 </script>
 
 <div class="edit">
@@ -50,6 +53,7 @@
 			{success}
 			themeBase={'One'}
 		/>
+		<FormButton label={'Cancel Changes'} themeBase={'One'} onclick={oncancel} />
 	</form>
 </div>
 

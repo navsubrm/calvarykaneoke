@@ -2,6 +2,7 @@ import type { Snippet } from 'svelte';
 
 export interface Props {
 	buttonTitle: string;
+	active: boolean;
 	processing: boolean;
 	fail: boolean;
 	success: boolean;
@@ -10,4 +11,5 @@ export interface Props {
 	successLabel?: string;
 	children: Snippet;
 	onsubmit: (e: SubmitEvent) => void;
+	oncancel: (e: MouseEvent) => void;
 }

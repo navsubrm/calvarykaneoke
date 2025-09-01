@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
-	import testData from './utils/testData';
 	import ChevronAnimation from './utils/ChevronAnimation.svelte';
 
-	let pageData = $state(testData);
+	let pageData = $state(page?.data?.hero);
 </script>
 
 <section style="--_background-img: url({pageData.backgroundImage});">

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
-	import Chevron from '$lib/components/icons/chevron/Chevron.svelte';
-	import { PrismicLink } from '@prismicio/svelte';
+	import Chevron from '$lib/icons/chevron/Chevron.svelte';
+	import SubMenu from '$lib/components/Header/utils/SubMenu.svelte';
 
-	let { menu } = $props();
+	let { menu, narrow = false } = $props();
 
 	let container: HTMLElement = $state() as HTMLElement;
 	let active = $state(false);
@@ -28,15 +28,19 @@
 
 <li bind:this={container} class="hoverable sub-menu-container" style="--_left: {left}px;">
 	<button class="header-menu" onclick={handleMenuOpen}>
-		{menu.menu_label}
+		{menu.label}
 		<Chevron bind:active />
 	</button>
 	<nav>
-		<ul class="sub-menu" class:active bind:this={subNav}>
-			{#each menu.menu_links as links}
-				<li class="hoverable">
-					<PrismicLink field={links} />
-				</li>
+		<ul class="sub-menu" class:active bind:this={subNav} class:narrow>
+			{#each menu.subMenu as link}
+				{#if link.type == 'link'}
+					<li class="hoverable">
+						<a href={link.href} title={link.alt}>{link.label}</a>
+					</li>
+				{:else if link.type == 'menu'}
+					<SubMenu menu={link} narrow={true} />
+				{/if}
 			{/each}
 		</ul>
 	</nav>
@@ -94,6 +98,22 @@
 				padding 0 0.5s linear;
 			transition-behavior: allow-discrete;
 		}
+	}
+
+	.narrow {
+		position: relative;
+		top: unset;
+		background-color: transparent;
+		height: 0px;
+		padding-block: 0;
+		transform: translateY(0);
+		transition:
+			height 0.25s linear allow-discrete,
+			scale 0.25s 0.1s linear,
+			transform 0.25s 0.15s linear,
+			opacity 0.25s 0.25s linear,
+			padding 0 0.5s linear;
+		transition-behavior: allow-discrete;
 	}
 
 	li {

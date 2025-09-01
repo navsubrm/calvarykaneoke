@@ -1,24 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import type { Content } from '@prismicio/client';
-	import { PrismicImage, PrismicLink, type SliceComponentProps } from '@prismicio/svelte';
 	import MailingListForm from './utils/MailingListForm.svelte';
 
-	type Props =
-		| SliceComponentProps<Content.FooterSlice>
-		| { slice: { slice_type: 'header'; variation: 'default' } };
-	const { slice }: Props = $props();
-
-	const navLinks = $state(page?.data?.footer?.data?.navigation_links);
-	const socialIcons = $state(page?.data?.footer?.data?.social_media_links);
-	const topBarImage = $state(page?.data?.footer?.data?.footer_top_image?.url);
+	const links = $state(page?.data?.links);
 </script>
 
 <footer
 	class="flex"
-	data-slice-type={slice.slice_type}
-	data-slice-variation={slice.variation}
-	style="--_background: url({topBarImage})"
+	style="
+		--_background: url({page?.data?.footer?.topBarImage}); 
+		--_component-height: {page?.data?.footer?.componentHeight}vh;
+	"
 >
 	<div class="top-bar"></div>
 	<div class="footer-content flex">
@@ -29,21 +21,26 @@
 		<MailingListForm />
 
 		<div class="flex nav-links">
-			{#each navLinks as link}
-				<PrismicLink field={link} />
+			{#each links as { label, href, alt, location }}
+				{#if location == 'footer-link'}
+					<a {href} title={alt}>{label}</a>
+				{/if}
 			{/each}
 		</div>
 
 		<div class="flex social-links">
-			{#each socialIcons as { icon_image, icon_link }}
-				<a class="social-link-img" href={icon_link.url} target="_blank">
-					<PrismicImage field={icon_image} />
-				</a>
+			{#each links as { label, href, alt, imgUrl, location }}
+				{#if location == 'footer-social'}
+					<a class="social-link-img" {href} target="_blank">
+						<img src={imgUrl} {alt} />
+						<small class="social-link-label">{label}</small>
+					</a>
+				{/if}
 			{/each}
 		</div>
 	</div>
 
-	<small>© Copyright {new Date().getFullYear()} J.D. Farag</small>
+	<small class="copyright">© Copyright {new Date().getFullYear()} J.D. Farag</small>
 </footer>
 
 <style>
@@ -66,6 +63,7 @@
 	footer {
 		position: relative;
 		flex-direction: column;
+		height: var(--_component-height);
 		min-height: 30vh;
 		background: var(--darkness);
 		padding-bottom: 3em;
@@ -78,6 +76,7 @@
 
 	.nav-links,
 	.social-links {
+		position: relative;
 		flex-wrap: wrap;
 		gap: 25px;
 		padding-top: 2.5em;
@@ -88,11 +87,20 @@
 		opacity: 0.6;
 		scale: 1;
 		transition: all 0.25s ease-in-out;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.social-link-img img {
+		height: 20px;
+		width: 20px;
 	}
 
 	.social-link-img:hover {
 		opacity: 1;
-		scale: 1.1;
+		scale: 1.05;
 	}
 
 	h2 {
@@ -121,10 +129,27 @@
 			sans-serif;
 	}
 
-	small {
+	.copyright {
 		color: #545454;
 		font-size: 9px;
 		position: absolute;
 		inset: auto auto 6% 3%;
+	}
+
+	.social-link-label {
+		display: none;
+		position: absolute;
+		bottom: -15px;
+		color: #545454;
+		font-size: 9px;
+		letter-spacing: -0.25px;
+		width: max-content;
+		opacity: 0;
+		transition: all 0.5s ease-in-out allow-discrete;
+	}
+
+	.social-link-img:hover > .social-link-label {
+		display: block;
+		opacity: 1;
 	}
 </style>

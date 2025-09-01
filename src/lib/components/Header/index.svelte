@@ -1,19 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import SubMenu from './utils/SubMenu.svelte';
-	import Hamburger from '$lib/components/icons/hamburger/Hamburger.svelte';
-	import type { Content } from '@prismicio/client';
-	import type { SliceComponentProps } from '@prismicio/svelte';
-	import { PrismicLink } from '@prismicio/svelte';
+	import Hamburger from '$lib/icons/hamburger/Hamburger.svelte';
 	import { onNavigate } from '$app/navigation';
 
-	type Props =
-		| SliceComponentProps<Content.HeaderSlice>
-		| { slice: { slice_type: 'header'; variation: 'default' } };
-
-	const { slice }: Props = $props();
-
-	const menus = $state(page?.data?.navigation?.data?.menus);
+	const links = $state(page?.data?.links);
 	let container: HTMLElement = $state() as HTMLElement;
 	let active = $state(false);
 
@@ -33,7 +24,7 @@
 
 <svelte:window onclick={handleCloseMenu} />
 
-<header data-slice-type={slice?.slice_type} data-slice-variation={slice?.variation}>
+<header>
 	<h2>JD FARAG</h2>
 
 	<button onclick={handleShowMenu} class="narrow btn"><Hamburger bind:active /> </button>
@@ -45,17 +36,13 @@
 {#snippet wideMenu()}
 	<nav class="wide">
 		<ul>
-			{#each menus as menu}
-				{#if menu.menu_links.length == 0}
-					<li>Empty Menu</li>
-				{:else if menu.menu_links.length == 1}
-					{#each menu.menu_links as link}
-						<li class="hoverable">
-							<PrismicLink field={link} />
-						</li>
-					{/each}
-				{:else}
-					<SubMenu {menu} />
+			{#each links as link}
+				{#if link.location == 'header' && link.type == 'link'}
+					<li class="hoverable">
+						<a href={link.href} title={link.alt}>{link.label}</a>
+					</li>
+				{:else if link.location == 'header' && link.type == 'menu'}
+					<SubMenu menu={link} />
 				{/if}
 			{/each}
 		</ul>
@@ -66,17 +53,13 @@
 	<nav class:active bind:this={container} class="narrow">
 		<button onclick={handleShowMenu} class="btn btn-close"><Hamburger bind:active /> </button>
 		<ul>
-			{#each menus as menu}
-				{#if menu.menu_links.length == 0}
-					<li>Empty Menu</li>
-				{:else if menu.menu_links.length == 1}
-					{#each menu.menu_links as link}
-						<li class="hoverable">
-							<PrismicLink field={link} />
-						</li>
-					{/each}
-				{:else}
-					<SubMenu {menu} />
+			{#each links as link}
+				{#if link.location == 'header' && link.type == 'link'}
+					<li class="hoverable">
+						<a href={link.href} title={link.alt}>{link.label}</a>
+					</li>
+				{:else if link.location == 'header' && link.type == 'menu'}
+					<SubMenu menu={link} />
 				{/if}
 			{/each}
 		</ul>

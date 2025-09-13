@@ -6,6 +6,9 @@ observability = {
     "enabled": true
 }
 
+[vars]
+IS_DEV = 'false'
+
 [[d1_databases]]
 binding = "DB"
 database_name = "calvary_content",

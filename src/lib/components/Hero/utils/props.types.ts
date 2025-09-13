@@ -1,4 +1,9 @@
-import type { Content } from '@prismicio/client';
-import type { SliceComponentProps } from '@prismicio/svelte';
-
-export type Props = SliceComponentProps<Content.HeroSlice>;
+export type HeroComponentData = {
+	page: string;
+	section: string;
+	background_image_url: string;
+	hero_icon_content: string;
+	hero_title_content: string;
+	sub_title_reft: string;
+	sub_title_right: string;
+};

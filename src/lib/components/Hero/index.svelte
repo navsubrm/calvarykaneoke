@@ -6,28 +6,28 @@
 	let pageData = $state(page?.data?.hero);
 </script>
 
-<section style="--_background-img: url({pageData.backgroundImage});">
+<section style="--_background-img: url({pageData.background_image_url});">
 	<Editor bind:pageData />
 	<div class="main-content">
-		{#if pageData?.heroIcon}
+		{#if pageData?.hero_icon_content}
 			<div class="title-header-icon">
-				<h3>{pageData?.heroIcon}</h3>
+				<h3>{pageData?.hero_icon_content}</h3>
 			</div>
 		{/if}
 
-		{#if pageData?.heroTitle}
+		{#if pageData?.hero_title_content}
 			<div class="main-title">
-				<h1>{pageData?.heroTitle}</h1>
+				<h1>{pageData?.hero_title_content}</h1>
 			</div>
 		{/if}
 
-		{#if pageData?.subTitleLeft && pageData?.subTitleRight}
+		{#if pageData?.sub_title_left && pageData?.sub_title_right}
 			<div class="sub-title">
 				<div class="sub-title-a">
-					{@html JSON.parse(pageData?.subTitleLeft)?.html}
+					{@html JSON.parse(pageData?.sub_title_left)?.html}
 				</div>
 				<div class="sub-title-b">
-					{@html JSON.parse(pageData?.subTitleRight)?.html}
+					{@html JSON.parse(pageData?.sub_title_right)?.html}
 				</div>
 			</div>
 		{/if}
@@ -85,6 +85,8 @@
 	.sub-title :global(:where(a, a:visited)) {
 		flex-wrap: wrap;
 		color: var(--white);
+		flex-basis: 0;
+		flex-grow: 1;
 	}
 
 	.sub-title-a,
@@ -95,6 +97,9 @@
 		gap: 0.5em;
 		padding-inline: 1.5em;
 		padding-block: 1em;
+		width: 50%;
+		flex-grow: 1;
+		flex-shrink: 0;
 	}
 
 	.sub-title-a {

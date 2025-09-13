@@ -6,7 +6,7 @@
 	let primaryContent = $derived(pageData?.primaryContent);
 	let asideContent = $derived(pageData?.asideContent);
 
-	$inspect('From Try Picture: ', primaryContent, asideContent);
+	//$inspect('From Try Picture: ', primaryContent, asideContent);
 </script>
 
 <section

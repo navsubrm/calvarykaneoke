@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { page } from '$app/state';
 	import { setTheme } from '$lib/config/setTheme';
 	import Hamburger from '$lib/icons/hamburger/Hamburger.svelte';
 	import Submit from '$lib/userInputs/submit/Submit.svelte';
@@ -6,24 +8,35 @@
 	import type { Props } from './utils/props.types';
 
 	let {
+		action = '?/edit',
 		buttonTitle = 'Edit Content',
-		active = $bindable(false),
-		processing = $bindable(false),
-		processingLabel = $bindable('Processing...'),
-		fail = $bindable(false),
-		failLabel = $bindable('Something went wrong. Please try again.'),
-		success = $bindable(false),
-		successLabel = $bindable('Content Updated Successfully.'),
-		children,
-		onsubmit = (e: SubmitEvent) => {
-			e.preventDefault();
-		},
-		oncancel = (e: MouseEvent) => {
-			e.preventDefault();
-		}
+		label = 'Update Content',
+		processingLabel = 'Processing...',
+		failLabel = 'Something went wrong. Please try again.',
+		successLabel = 'Content Updated Successfully.',
+		reset = $bindable(false),
+		children
 	}: Props = $props();
 
-	const form = $state(setTheme('One', 'form'));
+	const theme = $state(setTheme('One', 'form'));
+
+	let form: HTMLFormElement | undefined = $state();
+	let active = $state(false);
+
+	let processing = $state(page?.form?.processing || false);
+	let fail = $state(page?.form?.fail || false);
+	let success = $state(page?.form?.success || false);
+
+	const onsubmit = (e: SubmitEvent) => {
+		e.preventDefault();
+		processing = true;
+		form?.submit();
+	};
+	const oncancel = (e: MouseEvent) => {
+		e.preventDefault();
+		reset = !reset;
+		active = false;
+	};
 </script>
 
 <div class="edit">
@@ -33,7 +46,7 @@
 </div>
 
 <div
-	style="--_background: var({form.one}); --_text: var({form.two})"
+	style="--_background: var({theme.one}); --_text: var({theme.two})"
 	class="content-editor"
 	class:active
 >
@@ -41,10 +54,12 @@
 
 	<h4>{buttonTitle}</h4>
 
-	<form action="/" {onsubmit}>
-		{@render children?.()}
+	<form {action} method="POST" bind:this={form} {onsubmit} use:enhance>
+		{#key reset}
+			{@render children?.()}
+		{/key}
 		<Submit
-			label={'Update Content'}
+			{label}
 			{processingLabel}
 			{processing}
 			{failLabel}

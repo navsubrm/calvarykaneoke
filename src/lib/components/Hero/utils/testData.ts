@@ -1,12 +1,12 @@
 export default {
 	page: 'Home',
 	section: 'Hero',
-	backgroundImage: '/images/hero-bg.webp',
-	heroIcon: 'JD FARAG',
-	heroTitle: 'Bible Prophecy Updates',
-	subTitleLeft:
+	background_image_url: '/images/hero-bg.webp',
+	hero_icon_content: 'JD FARAG',
+	hero_title_content: 'Bible Prophecy Updates',
+	sub_title_left:
 		'{\"styled\":{\"ops\":[{\"insert\":\"Go to \"},{\"attributes\":{\"link\":\"/livestream\"},\"insert\":\"Livestream\"},{\"insert\":\" Page\\n\"}]},\"html\":\"<p>Go&nbsp;to&nbsp;<a href=\\\"/livestream\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">Livestream</a>&nbsp;Page</p>\"}',
-	subTitleRight:
+	sub_title_right:
 		'{\"styled\":{\"ops\":[{\"insert\":\"View \"},{\"attributes\":{\"link\":\"/prophecy-videos\"},\"insert\":\"Bible Prophecy Videos\"},{\"insert\":\"\\n\"}]},\"html\":\"<p>View&nbsp;<a href=\\\"/prophecy-videos\\\" rel=\\\"noopener noreferrer\\\" target=\\\"_blank\\\">Bible&nbsp;Prophecy&nbsp;Videos</a></p>\"}'
 };
 

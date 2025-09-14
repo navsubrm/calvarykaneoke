@@ -1,20 +1,30 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
-	import testData from './utils/testData';
+	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	import blankLargeImageLink from './utils/blankLargeImageLink';
 
-	let pageData = $state(testData);
+	let reset = $state(false);
+	let pageData = $state(componentDataConverter(page?.data?.largeImageLink, blankLargeImageLink));
+
+	$effect(() => {
+		reset;
+		pageData = componentDataConverter(page?.data?.largeImageLink, blankLargeImageLink);
+	});
 </script>
 
-<section class="container" style="--_component-height: {pageData?.componentHeight}vh;">
-	<Editor bind:pageData />
+<section class="container" style="--_component-height: {pageData?.content?.component_height}vh;">
+	<Editor bind:pageData bind:reset />
 	<div class="upper-content-area">
-		<a href={pageData?.mainImage?.href}>
-			<img src={pageData?.mainImage.url} alt={pageData?.mainImage?.alt} />
-			<div class="title-date-div-large-2">
-				<h4 class="h4-name-2">{pageData?.mainImage?.alt}</h4>
-				<p class="date-text-div-2">Click To View</p>
-			</div>
-		</a>
+		{#if pageData?.content?.main_image}
+			<a href={pageData?.content?.main_image?.href}>
+				<img src={pageData?.content?.main_image.url} alt={pageData?.content?.main_image?.alt} />
+				<div class="title-date-div-large-2">
+					<h4 class="h4-name-2">{pageData?.content?.main_image?.alt}</h4>
+					<p class="date-text-div-2">Click To View</p>
+				</div>
+			</a>
+		{/if}
 	</div>
 </section>
 

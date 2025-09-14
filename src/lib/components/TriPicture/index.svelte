@@ -1,37 +1,52 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
+	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	import blankTriPictureContent from './utils/blankTriPictureContent';
 
-	let pageData = $state(page?.data?.triPicture);
-	let primaryContent = $derived(pageData?.primaryContent);
-	let asideContent = $derived(pageData?.asideContent);
+	let reset = $state(false);
+	let pageData = $state(componentDataConverter(page?.data?.triPicture, blankTriPictureContent));
 
-	//$inspect('From Try Picture: ', primaryContent, asideContent);
+	$effect(() => {
+		reset;
+		pageData = componentDataConverter(page?.data?.triPicture, blankTriPictureContent);
+	});
 </script>
 
 <section
 	class="flex"
-	style="--_bg-upper-color: {pageData?.backgroundUpperColor?.value}; --_bg-lower-color: {pageData
-		?.backgroundLowerColor?.value}"
+	style="--_bg-upper-color: {pageData?.content?.background_upper_color.value}; 
+		--_bg-lower-color: {pageData?.content?.background_lower_color.value}"
 >
-	<Editor bind:pageData />
+	<Editor bind:pageData bind:reset />
 	<div class="flex container">
-		<a href={primaryContent?.link?.href} class="large-image" title={primaryContent?.link?.alt}>
-			<p>{primaryContent?.link?.label}</p>
-			<img src={primaryContent?.image?.src} alt={primaryContent?.image?.alt} />
-		</a>
+		{#if pageData?.content?.primary_content}
+			<a
+				href={pageData?.content?.primary_content?.link?.href}
+				class="large-image"
+				title={pageData?.content?.primary_content?.link?.alt}
+			>
+				<p>{pageData?.content?.primary_content?.link?.label}</p>
+				<img
+					src={pageData?.content?.primary_content?.image?.src}
+					alt={pageData?.content?.primary_content?.image?.alt}
+				/>
+			</a>
+		{/if}
 		<div class="flex content-block-container">
-			{#each asideContent as { image, content, link }}
-				<div class="flex content-block">
-					<a href={link.href} class="content-block-img-a" title={link.alt}>
-						<img src={image?.src} alt={link?.alt} />
-					</a>
+			{#if pageData?.content.aside_content}
+				{#each pageData?.content?.aside_content as { image, content, link }}
+					<div class="flex content-block">
+						<a href={link.href} class="content-block-img-a" title={link.alt}>
+							<img src={image?.src} alt={link?.alt} />
+						</a>
 
-					<div class="content-details">
-						{@html JSON.parse(content)?.html}
+						<div class="content-details">
+							{@html JSON.parse(content)?.html}
+						</div>
 					</div>
-				</div>
-			{/each}
+				{/each}
+			{/if}
 		</div>
 	</div>
 </section>

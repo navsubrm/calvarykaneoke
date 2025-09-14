@@ -1,26 +1,38 @@
 <script>
+	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
-	import testData from './utils/testData';
+	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	import blankWideSpacedContent from './utils/blankWideSpacedContent';
 
-	let { pageData = $bindable(testData) } = $props();
+	let reset = $state(false);
+	let pageData = $state(componentDataConverter(page?.data?.wideContent, blankWideSpacedContent));
+
+	$effect(() => {
+		reset;
+		pageData = componentDataConverter(page?.data?.wideContent, blankWideSpacedContent);
+	});
 </script>
 
 <section
 	style="
-        --_component-height: {pageData?.componentHeight}vh; 
-        --_background-color: {pageData?.backgroundColor?.value};
-        --_background-image: url({pageData?.backgroundImageUrl});"
+        --_component-height: {pageData?.content?.component_height}vh; 
+        --_background-color: {pageData?.content?.background_color?.value};
+        --_background-image: url({pageData?.content?.background_image_url});"
 >
-	<Editor bind:pageData />
+	<Editor bind:pageData bind:reset />
 	<div class="upper-content-area">
-		<div class="upper-content">
-			{@html JSON.parse(pageData?.wideContent)?.html}
-		</div>
+		{#if pageData?.content?.wide_content}
+			<div class="upper-content">
+				{@html JSON.parse(pageData?.content?.wide_content)?.html}
+			</div>
+		{/if}
 	</div>
 	<div class="lower-content-area">
-		<div class="lower-content">
-			{@html JSON.parse(pageData?.narrowContent)?.html}
-		</div>
+		{#if pageData?.content?.narrow_content}
+			<div class="lower-content">
+				{@html JSON.parse(pageData?.content?.narrow_content)?.html}
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -32,7 +44,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		height: var(--_component-height);
-		min-height: fit-content;
+		min-height: 15vh;
 		background:
 			linear-gradient(
 				to bottom,

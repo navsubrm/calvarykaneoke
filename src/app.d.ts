@@ -8,23 +8,37 @@ declare global {
 			route: string;
 			page_content: unknown;
 			meta_data: unknown;
-			created_at: string | undefined;
-			updated_at: string | undefined;
-			version: number | undefined;
+			created_at?: string | undefined;
+			updated_at?: string | undefined;
+			version?: number | undefined;
+		};
+
+		type Components = {
+			_id?: string;
+			component_type: string;
+			component_name: string;
+			content: string | any;
+			created_at?: string | undefined;
+			updated_at?: string | undefined;
+			version?: number | undefined;
 		};
 
 		type Hero = {
-			_id?: string;
-			page: string;
-			page_index: number;
 			background_image_url: string;
 			hero_icon_content: string;
 			hero_title_content: string;
 			sub_title_left: string;
 			sub_title_right: string;
-			created_at: string | undefined;
-			updated_at: string | undefined;
-			version: number | undefined;
+		};
+
+		type CurrentSermonLink = {
+			component_height: number;
+			background_image_url: string;
+			main_image: {
+				href: string;
+				url: string;
+				alt: string;
+			};
 		};
 
 		interface Platform {

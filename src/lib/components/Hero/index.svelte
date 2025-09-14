@@ -2,32 +2,40 @@
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
 	import ChevronAnimation from './utils/ChevronAnimation.svelte';
+	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	import blankHero from './utils/blankHero';
 
-	let pageData = $state(page?.data?.hero);
+	let reset = $state(false);
+	let pageData = $state(componentDataConverter(page?.data?.hero, blankHero));
+
+	$effect(() => {
+		reset;
+		pageData = componentDataConverter(page?.data?.hero, blankHero);
+	});
 </script>
 
-<section style="--_background-img: url({pageData.background_image_url});">
-	<Editor bind:pageData />
+<section style="--_background-img: url({pageData?.content?.background_image_url});">
+	<Editor bind:pageData bind:reset />
 	<div class="main-content">
-		{#if pageData?.hero_icon_content}
+		{#if pageData?.content?.hero_icon_content}
 			<div class="title-header-icon">
-				<h3>{pageData?.hero_icon_content}</h3>
+				<h3>{pageData?.content?.hero_icon_content}</h3>
 			</div>
 		{/if}
 
-		{#if pageData?.hero_title_content}
+		{#if pageData?.content?.hero_title_content}
 			<div class="main-title">
-				<h1>{pageData?.hero_title_content}</h1>
+				<h1>{pageData?.content?.hero_title_content}</h1>
 			</div>
 		{/if}
 
-		{#if pageData?.sub_title_left && pageData?.sub_title_right}
+		{#if pageData?.content?.sub_title_left && pageData?.content?.sub_title_right}
 			<div class="sub-title">
 				<div class="sub-title-a">
-					{@html JSON.parse(pageData?.sub_title_left)?.html}
+					{@html JSON.parse(pageData?.content?.sub_title_left)?.html}
 				</div>
 				<div class="sub-title-b">
-					{@html JSON.parse(pageData?.sub_title_right)?.html}
+					{@html JSON.parse(pageData?.content?.sub_title_right)?.html}
 				</div>
 			</div>
 		{/if}
@@ -121,6 +129,7 @@
 
 		.sub-title {
 			flex-direction: row;
+			width: 100%;
 		}
 
 		.sub-title-a,

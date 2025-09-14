@@ -1,23 +1,27 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import ContentEditorPanel from '$lib/userInputs/contentEditorPanel/ContentEditorPanel.svelte';
 	import General from '$lib/userInputs/general/General.svelte';
 	import QuillInput from '$lib/userInputs/quillInput/QuillInput.svelte';
 
 	let { pageData = $bindable(), reset = $bindable(false) } = $props();
-	const buttonTitle = $state('Edit Hero Content');
 
-	$effect(() => {
-		reset;
-		pageData = page?.data?.hero;
-	});
+	const buttonTitle = $state('Edit Hero Content');
 </script>
 
-<ContentEditorPanel {buttonTitle} action={'?/edit-home'} children={heroContentSnippet} bind:reset />
+<ContentEditorPanel {buttonTitle} action={'?/set-hero'} children={heroContentSnippet} bind:reset />
 
 {#snippet heroContentSnippet()}
-	<input type="hidden" name="component" value="hero" />
+	<input type="hidden" name="component_type" value={'Hero'} />
 	<div class="input">
+		<General
+			name="component_name"
+			label="Component Name"
+			placeholder="Enter the component name."
+			type={'text'}
+			required={true}
+			themeBase={'One'}
+			bind:value={pageData.component_name}
+		/>
 		<General
 			name="background_image_url"
 			label="Background Image URL"
@@ -25,7 +29,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.background_image_url}
+			bind:value={pageData.content.background_image_url}
 		/>
 	</div>
 	<div class="input">
@@ -36,7 +40,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.hero_icon_content}
+			bind:value={pageData.content.hero_icon_content}
 		/>
 	</div>
 	<div class="input">
@@ -47,7 +51,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.hero_title_content}
+			bind:value={pageData.content.hero_title_content}
 		/>
 	</div>
 	<div class="editor">
@@ -56,7 +60,7 @@
 			label="Sub Title Left"
 			placeholder="Enter your Hero title content here."
 			themeBase={'One'}
-			bind:value={pageData.sub_title_left}
+			bind:value={pageData.content.sub_title_left}
 		/>
 	</div>
 	<div class="editor">
@@ -65,7 +69,7 @@
 			label="Sub Title Right"
 			placeholder="Enter your Hero title content here."
 			themeBase={'One'}
-			bind:value={pageData.sub_title_right}
+			bind:value={pageData.content.sub_title_right}
 		/>
 	</div>
 {/snippet}

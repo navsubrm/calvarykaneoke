@@ -3,14 +3,14 @@
 	import Editor from './utils/Editor.svelte';
 	import ChevronAnimation from './utils/ChevronAnimation.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blankHero from './utils/blankHero';
+	import blank from './utils/blank';
 
 	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.hero, blankHero));
+	let pageData = $state(componentDataConverter(page?.data?.hero, blank));
 
 	$effect(() => {
 		reset;
-		pageData = componentDataConverter(page?.data?.hero, blankHero);
+		pageData = componentDataConverter(page?.data?.hero, blank);
 	});
 </script>
 

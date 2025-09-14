@@ -2,14 +2,14 @@
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blankWideSpacedContent from './utils/blankWideSpacedContent';
+	import blank from './utils/blank';
 
 	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.wideContent, blankWideSpacedContent));
+	let pageData = $state(componentDataConverter(page?.data?.wideContent, blank));
 
 	$effect(() => {
 		reset;
-		pageData = componentDataConverter(page?.data?.wideContent, blankWideSpacedContent);
+		pageData = componentDataConverter(page?.data?.wideContent, blank);
 	});
 </script>
 

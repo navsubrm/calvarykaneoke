@@ -2,14 +2,16 @@
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blankTriPictureContent from './utils/blankTriPictureContent';
+	import blank from './utils/blank';
+
+	$inspect('Page data from TriPicture index: ', page?.data?.triPicture);
 
 	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.triPicture, blankTriPictureContent));
+	let pageData = $state(componentDataConverter(page?.data?.triPicture, blank));
 
 	$effect(() => {
 		reset;
-		pageData = componentDataConverter(page?.data?.triPicture, blankTriPictureContent);
+		pageData = componentDataConverter(page?.data?.triPicture, blank);
 	});
 </script>
 

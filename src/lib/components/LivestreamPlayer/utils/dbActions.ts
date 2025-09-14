@@ -2,8 +2,7 @@ import type { RequestEvent } from '@sveltejs/kit';
 import * as CRUD from '$lib/server/CRUD';
 import { fail } from '@sveltejs/kit';
 import { dataBaseCheck } from '$lib/server/dataBaseCheck';
-import type { LargeImageLinkForm } from './prop.types';
-type FormData = LargeImageLinkForm;
+import type { FormData } from './props.types';
 
 export async function setLargeLinkFormDataContent({ platform, request }: RequestEvent) {
 	if (!dataBaseCheck(platform)) return fail(500, { fail: true });
@@ -25,11 +24,8 @@ export function formDataConversion(formData: FormData) {
 		component_name: formData.component_name.toString(),
 		content: JSON.stringify({
 			component_height: Number(formData?.component_height),
-			main_image: {
-				href: formData?.main_image_href.toString(),
-				url: formData?.main_image_url.toString(),
-				alt: formData?.main_image_alt.toString()
-			}
+			background_color: formData?.background_color.toString(),
+			streams: formData?.streams
 		})
 	};
 

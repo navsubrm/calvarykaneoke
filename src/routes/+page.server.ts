@@ -1,13 +1,24 @@
 import { type Actions, type RequestEvent } from '@sveltejs/kit';
 import * as Page from '$lib/server/pageCRUD.js';
 import * as CRUD from '$lib/server/CRUD.js';
-import { setHeroContent } from '$lib/components/Hero/utils/heroActions.js';
-import { setLargeLinkFormDataContent } from '$lib/components/LargeImageLink/utils/largeImageLinkActions.js';
-import { setWideSpacedContent } from '$lib/components/WideSpacedContent/utils/wideSpacedContentActions.js';
-import { setTriPictureContent } from '$lib/components/TriPicture/utils/triPictureActions.js';
+import { setHeroContent } from '$lib/components/Hero/utils/dbActions.js';
+import { setLargeLinkFormDataContent } from '$lib/components/LargeImageLink/utils/dbActions.js';
+import { setWideSpacedContent } from '$lib/components/WideSpacedContent/utils/dbActions.js';
+import { setTriPictureContent } from '$lib/components/TriPicture/utils/dbActions.js';
 
 export async function load({ platform }) {
+	// const home: App.Page = {
+	// 	name: 'Home',
+	// 	route: '/',
+	// 	page_content: ['Hero-|-hero1'],
+	// 	meta_data: {
+	// 		title: 'Calvary Kaneohe | Home'
+	// 	}
+	// };
+
 	const page = await Page.queryNewestRecordByPage(platform, '/');
+
+	//if (!page) await Page.update(platform, home);
 
 	return {
 		page,

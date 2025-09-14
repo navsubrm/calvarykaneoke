@@ -2,14 +2,14 @@
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blankLargeImageLink from './utils/blankLargeImageLink';
+	import blank from './utils/blank';
 
 	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.largeImageLink, blankLargeImageLink));
+	let pageData = $state(componentDataConverter(page?.data?.largeImageLink, blank));
 
 	$effect(() => {
 		reset;
-		pageData = componentDataConverter(page?.data?.largeImageLink, blankLargeImageLink);
+		pageData = componentDataConverter(page?.data?.largeImageLink, blank);
 	});
 </script>
 

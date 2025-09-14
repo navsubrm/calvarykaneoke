@@ -12,3 +12,13 @@ Commands for updating Database construct:
 
 
 -- next look at what the pageContent object looks like?
+
+
+-- -------- These commands didn't work well.
+
+-- Prep db for export: npx wrangler d1 export calvary_content --local > local_data.sql
+
+-- Push db to remote: npx wrangler d1 execute calvary_content --remote --file local_data.sql
+
+
+-- D1 migrations: npx wrangler d1 migrations apply calvary_content --remote

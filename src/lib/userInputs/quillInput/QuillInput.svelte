@@ -37,8 +37,6 @@
 	$effect(() => {
 		if (didMount && quill) value = quill.value;
 	});
-
-	//$inspect('Quill Input: ', quill?.value, value);
 </script>
 
 <span
@@ -63,6 +61,11 @@
 	span {
 		background: transparent;
 	}
+
+	span :global(> *) {
+		width: 100%;
+	}
+
 	.inputs {
 		display: none;
 		margin-top: 5px;
@@ -92,8 +95,13 @@
 	span :global(.ql-toolbar),
 	span :global(.ql-container) {
 		border: none;
-		min-width: 300px;
-		max-width: 70ch;
+		width: 100%;
+	}
+
+	span:hover :global(.ql-editor),
+	span:focus :global(.ql-editor),
+	span:focus-within :global(.ql-editor) {
+		resize: vertical;
 	}
 
 	span :global(.ql-container) {
@@ -110,13 +118,26 @@
 		font-size: 1.1em;
 	}
 
-	span:hover :global(.ql-toolbar),
-	span:hover :global(.ql-container),
+	span :global(.ql-toolbar),
+	span :global(.ql-container),
+	span :global(.ql-toolbar),
+	span :global(.ql-container),
+	span :global(.ql-toolbar),
+	span :global(.ql-container) {
+		border: solid 1px var(--_background);
+	}
+
 	span:focus :global(.ql-toolbar),
 	span:focus :global(.ql-container),
 	span:focus-within :global(.ql-toolbar),
 	span:focus-within :global(.ql-container) {
 		border: solid 1px color-mix(in lab, var(--_highlight), transparent 30%);
+	}
+
+	span:hover :global(.ql-toolbar),
+	span:hover :global(.ql-container) {
+		border: solid 1px color-mix(in lab, var(--_highlight), transparent 30%);
+		border-top: solid 1px color-mix(in lab, var(--_highlight), transparent 30%);
 	}
 
 	span :global(.ql-container strong) {
@@ -154,13 +175,38 @@
 	}
 
 	.editor-container :global(.ql-toolbar) {
-		display: none;
+		transform: translateY(15px) translateZ(-1);
+		height: 15px;
+		overflow: hidden;
 	}
 
-	.editor-container:hover :global(.ql-toolbar),
+	.editor-container :global(.ql-container) {
+		transform: translateY(-15px);
+
+		@starting-style {
+			transform: translateY(0);
+		}
+	}
+
+	.editor-container:focus :global(.ql-toolbar:hover),
 	.editor-container:focus :global(.ql-toolbar),
 	.editor-container:focus-within :global(.ql-toolbar) {
-		display: inherit;
+		max-height: 180px;
+		height: 100%;
+		transform: unset;
+		overflow: visible;
+
+		@starting-style {
+			height: 0px;
+			transform: translate(100%);
+			overflow: hidden;
+		}
+	}
+
+	.editor-container:focus :global(.ql-container),
+	.editor-container:focus-within :global(.ql-container) {
+		transform: unset;
+		transition: all 0.25s linear allow-discrete;
 	}
 
 	span :global(.ql-picker-label:hover .ql-stroke),

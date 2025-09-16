@@ -35,6 +35,17 @@ p {
 	font-family: 'Open Sans', sans-serif;
 }
 
+:where(p:empty){
+	line-height: 1.2;
+	min-height: clamp(17px, 1.1em, 20px);
+	white-space: pre;
+}
+
+a, a:visited {
+	color: inherit;
+}
+
+
 p > a {
 	white-space: pre;
 }

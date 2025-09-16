@@ -18,6 +18,10 @@
 		children
 	}: Props = $props();
 
+	$effect(() => {
+		if (page?.form?.success) setTimeout(() => (success = false), 2000);
+	});
+
 	const theme = $state(setTheme('One', 'form'));
 
 	let form: HTMLFormElement | undefined = $state();
@@ -157,5 +161,14 @@
 
 	h4 {
 		color: var(--_text);
+	}
+
+	.content-editor :global(fieldset) {
+		padding: 1em;
+	}
+
+	.content-editor :global(legend) {
+		color: var(--_text);
+		padding: 5px;
 	}
 </style>

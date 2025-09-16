@@ -12,7 +12,26 @@ export const toolbarOptions = [
 	[{ indent: '-1' }, { indent: '+1' }], // outdent/indent
 	//[{ direction: 'rtl' }], // text direction
 
-	//[{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
+	// [
+	// 	{
+	// 		size: [
+	// 			'10px',
+	// 			'12px',
+	// 			'14px',
+	// 			'16px',
+	// 			'18px',
+	// 			'20px',
+	// 			'24px',
+	// 			'30px',
+	// 			'32px',
+	// 			'36px',
+	// 			'48px',
+	// 			'60px',
+	// 			'72px',
+	// 			'96px'
+	// 		]
+	// 	}
+	// ], // custom dropdown ['small', false, 'large', 'huge']
 
 	[{ color: [...colorArray] }], //, { background: [] }], // dropdown with defaults from theme
 	//[{ font: [] }],

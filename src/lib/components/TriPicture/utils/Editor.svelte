@@ -221,14 +221,3 @@
 		</div>
 	</fieldset>
 {/snippet}
-
-<style>
-	fieldset {
-		padding: 1em;
-	}
-
-	legend {
-		color: var(--_text);
-		padding: 5px;
-	}
-</style>

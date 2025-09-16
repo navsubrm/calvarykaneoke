@@ -2,9 +2,8 @@
 	import { page } from '$app/state';
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	import isJson from '$lib/config/isJson';
 	import blank from './utils/blank';
-
-	$inspect('Page data from TriPicture index: ', page?.data?.triPicture);
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.triPicture, blank));
@@ -17,8 +16,8 @@
 
 <section
 	class="flex"
-	style="--_bg-upper-color: {pageData?.content?.background_upper_color.value}; 
-		--_bg-lower-color: {pageData?.content?.background_lower_color.value}"
+	style="--_bg-upper-color: {pageData?.content?.background_upper_color?.value}; 
+		--_bg-lower-color: {pageData?.content?.background_lower_color?.value}"
 >
 	<Editor bind:pageData bind:reset />
 	<div class="flex container">
@@ -36,16 +35,18 @@
 			</a>
 		{/if}
 		<div class="flex content-block-container">
-			{#if pageData?.content.aside_content}
+			{#if pageData?.content?.aside_content}
 				{#each pageData?.content?.aside_content as { image, content, link }}
 					<div class="flex content-block">
-						<a href={link.href} class="content-block-img-a" title={link.alt}>
+						<a href={link?.href} class="content-block-img-a" title={link?.alt}>
 							<img src={image?.src} alt={link?.alt} />
 						</a>
 
-						<div class="content-details">
-							{@html JSON.parse(content)?.html}
-						</div>
+						{#if isJson(content)}
+							<div class="content-details">
+								{@html JSON.parse(content)?.html}
+							</div>
+						{/if}
 					</div>
 				{/each}
 			{/if}

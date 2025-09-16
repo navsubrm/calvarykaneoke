@@ -4,7 +4,7 @@ import { fail } from '@sveltejs/kit';
 import { dataBaseCheck } from '$lib/server/dataBaseCheck';
 import type { FormData } from './props.types';
 
-export async function setLargeLinkFormDataContent({ platform, request }: RequestEvent) {
+export async function setDataContent({ platform, request }: RequestEvent) {
 	if (!dataBaseCheck(platform)) return fail(500, { fail: true });
 	const data = Object.fromEntries(await request.formData());
 	const content = formDataConversion(data as FormData);

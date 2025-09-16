@@ -3,7 +3,7 @@
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
 	import blank from './utils/blank';
-	import SocialFooter from '../SocialFooter/SocialFooter.svelte';
+	import SocialFooter from '../SocialFooter/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.liveStream, blank));
@@ -14,6 +14,8 @@
 		reset;
 		pageData = componentDataConverter(page?.data?.liveStream, blank);
 	});
+
+	$inspect('Page data from livestream: ', pageData);
 
 	function checkAlternateSources() {
 		if (!streamPlayer) return;
@@ -28,9 +30,9 @@
 
 <section
 	style="--_component-height: {pageData?.content?.component_height}vh; 
-		--_background-base: {pageData?.content?.background_color};
-		--_gradient-upper: {pageData?.content?.gradient_upper};
-		--_gradient-lower: {pageData?.content?.gradient_lower};"
+		--_background-base: {pageData?.content?.background_color?.value};
+		--_gradient-upper: {pageData?.content?.gradient_upper?.value};
+		--_gradient-lower: {pageData?.content?.gradient_lower?.value};"
 >
 	<Editor bind:pageData bind:reset />
 	<div class="content">
@@ -68,13 +70,14 @@
 
 <style type="text/css">
 	section {
-		--_padding: 2.5em;
+		position: relative;
+		--_footer-padding: 2.5em;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: var(--_padding);
-		padding-top: calc(var(--_padding) + 10vh);
+		padding: var(--_footer-padding);
+		padding-top: calc(var(--_footer-padding) + 10vh);
 		min-height: fit-content;
 		height: var(--_component-height, 90vh);
 		background:
@@ -142,8 +145,8 @@
 
 	@media (min-width: 600px) {
 		section {
-			--_padding: 4em;
-			padding: var(--_padding);
+			--_footer-padding: 4em;
+			padding: var(--_footer-padding);
 			padding-top: calc(3em * 2);
 		}
 

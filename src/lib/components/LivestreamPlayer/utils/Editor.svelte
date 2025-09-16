@@ -11,12 +11,7 @@
 	let streamCount = $derived(pageData?.content?.streams.length.toString());
 </script>
 
-<ContentEditorPanel
-	{buttonTitle}
-	action={'?/update-large-image-link'}
-	children={contentEditor}
-	bind:reset
-/>
+<ContentEditorPanel {buttonTitle} action={'?/set-livestream'} children={contentEditor} bind:reset />
 
 {#snippet contentEditor()}
 	<input type="hidden" name="component_type" value={'Live Stream'} />

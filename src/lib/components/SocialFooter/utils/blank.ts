@@ -1,5 +1,5 @@
 export default {
-	component_type: 'Livestream Player',
+	component_type: 'Social Footer',
 	component_name: '',
 	content: {
 		component_height: 10,

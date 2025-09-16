@@ -25,24 +25,21 @@ export default {
 	}
 };
 
-/**
- * LIVESTREAM SCHEDULE
+// `LIVESTREAM SCHEDULE
 
-Sun 8:30 AM (HST) - Bible Prophecy Update (11:30 AM PST / 12:30 PM MST / 1:30 PM CST / 2:30 PM EST)
-Sun 10:45 AM (HST) - Sunday Sermon (1:45 PM PST / 2:45 PM MST / 3:45 PM CST / 4:45 PM EST)
-Thurs 7:00 PM (HST) - Thursday Sermon (10:00 PM PST / 11:00 PM MST / 12:00 AM CST / 1:00 AM EST)
+// Sun 8:30 AM (HST) - Bible Prophecy Update (11:30 AM PST / 12:30 PM MST / 1:30 PM CST / 2:30 PM EST)
+// Sun 10:45 AM (HST) - Sunday Sermon (1:45 PM PST / 2:45 PM MST / 3:45 PM CST / 4:45 PM EST)
+// Thurs 7:00 PM (HST) - Thursday Sermon (10:00 PM PST / 11:00 PM MST / 12:00 AM CST / 1:00 AM EST)
 
-The worship portions of our services are now being livestreamed on jdfarag.org and in our apps. Pastor begins speaking approximately 30 minutes following the beginning of opening worship.
+// The worship portions of our services are now being livestreamed on jdfarag.org and in our apps. Pastor begins speaking approximately 30 minutes following the beginning of opening worship.
 
-YouTube and Facebook livestreams begin approximately 30 minutes later than the jdfarag streaming times above, and do not include the worship portions of the service.
+// YouTube and Facebook livestreams begin approximately 30 minutes later than the jdfarag streaming times above, and do not include the worship portions of the service.
 
-Bible Prophecy Updates are available for on-demand viewing in "Prophecy Vids" shortly following the livestream.
+// Bible Prophecy Updates are available for on-demand viewing in "Prophecy Vids" shortly following the livestream.
 
-Please visit our Support Center for additional livestream information or assistance.
+// Please visit our Support Center for additional livestream information or assistance.
 
-Please visit calvarykaneohe.church for in-person service times and location information.
-on-demand viewing 
-Support Center
- calvarykaneohe.church 
-
- */
+// Please visit calvarykaneohe.church for in-person service times and location information.
+// on-demand viewing
+// Support Center
+//  calvarykaneohe.church`

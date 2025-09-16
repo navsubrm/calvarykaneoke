@@ -5,12 +5,11 @@
 	import blank from './utils/blank';
 
 	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.liveStream, blank));
-	let index = $state(0);
+	let pageData = $state(componentDataConverter(page?.data?.socialFooter, blank));
 
 	$effect(() => {
 		reset;
-		pageData = componentDataConverter(page?.data?.liveStream, blank);
+		pageData = componentDataConverter(page?.data?.socialFooter, blank);
 	});
 </script>
 
@@ -23,6 +22,7 @@
 </svelte:head>
 
 <div class="component-footer">
+	<Editor bind:pageData bind:reset />
 	<div class="share-items">
 		<p>Share:</p>
 		<span class="facebook">
@@ -119,6 +119,7 @@
 
 <style>
 	.component-footer {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

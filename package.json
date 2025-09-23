@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"gsap": "^3.13.0",
+		"pdf-lib": "^1.17.1",
 		"quill": "^2.0.3",
 		"svelte-select": "^5.8.3"
 	}

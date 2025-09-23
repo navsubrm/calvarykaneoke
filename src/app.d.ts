@@ -46,6 +46,7 @@ declare global {
 				DB: D1Database;
 				TEMPLATE: string;
 				IS_DEV: boolean;
+				ASSETS: Fetcher;
 			};
 			cf: CfProperties;
 			ctx: ExecutionContext;

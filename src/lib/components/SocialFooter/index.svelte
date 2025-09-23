@@ -3,6 +3,7 @@
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
 	import blank from './utils/blank';
+	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.socialFooter, blank));
@@ -113,7 +114,8 @@
 
 	<div class="share-items abc-link">
 		<p>ABC PDFs & Transcripts:</p>
-		<a href="/abcs" class="button">ABC PDFs</a>
+		<MainButton href={'/abcs'} label={'ABC PDFs'} />
+		<!-- <a href="/abcs" class="button">ABC PDFs</a> -->
 	</div>
 </div>
 
@@ -121,9 +123,12 @@
 	.component-footer {
 		position: relative;
 		display: flex;
-		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 1em;
+		justify-content: center;
 		align-items: center;
 		padding-block: 1.5em;
+		border-top: solid 1px var(--deep-purple);
 	}
 
 	.share-items {
@@ -172,7 +177,7 @@
 		background: var(--gold);
 		opacity: 0.8;
 	}
-
+	/* 
 	.button {
 		display: flex;
 		background: white;
@@ -194,5 +199,11 @@
 		background: var(--deep-purple);
 		color: var(--floral-white);
 		border: solid 0.25px var(--deep-purple);
+	} */
+
+	@media (min-width: 700px) {
+		.component-footer {
+			justify-content: space-between;
+		}
 	}
 </style>

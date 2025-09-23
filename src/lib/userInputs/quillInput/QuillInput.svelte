@@ -6,6 +6,8 @@
 	import type QuillInit from './utils/handleQuillSetup.svelte';
 	import type { Props } from './utils/props.types';
 	import 'quill/dist/quill.snow.css';
+	import General from '../general/General.svelte';
+	import Toggle from '$lib/icons/toggle/Toggle.svelte';
 
 	let {
 		name,
@@ -23,6 +25,7 @@
 	let quill: QuillInit | undefined = $state();
 	let form = $state(setTheme(themeBase, 'form'));
 	let didMount = $state(false);
+	let inputBg = $state(false);
 
 	onMount(() => {
 		let interval = setInterval(async () => {
@@ -37,6 +40,11 @@
 	$effect(() => {
 		if (didMount && quill) value = quill.value;
 	});
+
+	function handleBgToggle(e: MouseEvent) {
+		e.preventDefault();
+		inputBg = !inputBg;
+	}
 </script>
 
 <span
@@ -48,18 +56,54 @@
 			--_warn: var({form.five}); 
 			--_error: var({form.six}); 
 			--_bold: var({form.seven}); 
-			--_anchor: var({form.eight})"
+			--_anchor: var({form.eight});"
 >
-	<Label {name} {label} {required} {messages} {themeBase} />
-	<div class="inputs" class:edit={type == 'Edit'} class:display={type == 'Display'}>
+	<div class="label-button">
+		<Label {name} {label} {required} {messages} {themeBase} />
+		<button onclick={handleBgToggle}>
+			Toggle BG<Toggle bind:active={inputBg} />
+		</button>
+	</div>
+
+	<div
+		class="inputs"
+		class:edit={type == 'Edit'}
+		class:display={type == 'Display'}
+		class:light-bg={inputBg}
+	>
 		<div bind:this={input}></div>
 		<input type="hidden" {name} bind:value />
 	</div>
 </span>
 
 <style>
+	button {
+		display: flex;
+		text-wrap: nowrap;
+		background: none;
+		border: none;
+		--_height: 15px;
+		--_fill: var(--_highlight);
+		--_inactive-fill: color-mix(in lab, var(--_background), var(--_text) 10%);
+		--_active-fill: var(--_text);
+		color: var(--_text);
+		width: max-content;
+		font-family: inherit;
+		font-size: inherit;
+	}
+
+	.label-button {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	span {
 		background: transparent;
+		--_input-bg: var(--_background);
+	}
+
+	.light-bg {
+		--_input-bg: var(--_text);
 	}
 
 	span :global(> *) {
@@ -182,6 +226,7 @@
 
 	.editor-container :global(.ql-container) {
 		transform: translateY(-15px);
+		background-color: var(--_input-bg);
 
 		@starting-style {
 			transform: translateY(0);
@@ -206,7 +251,12 @@
 	.editor-container:focus :global(.ql-container),
 	.editor-container:focus-within :global(.ql-container) {
 		transform: unset;
+		background-color: var(--_input-bg);
 		transition: all 0.25s linear allow-discrete;
+	}
+
+	.editor-container:hover :global(.ql-container) {
+		background-color: var(--_input-bg);
 	}
 
 	span :global(.ql-picker-label:hover .ql-stroke),

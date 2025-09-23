@@ -1,0 +1,7 @@
+This will be important when handling downloadable assets: 
+
+        const existingPdfBytes: ArrayBuffer | undefined = await platform?.env.ASSETS.fetch(
+				TEMPLATE
+			).then((res) => res.arrayBuffer());
+
+You need to fetch asset from the ASSETS fetcher.  This can be typed by adding "ASSETS: Fetcher;" to the app.d.ts app/env section.

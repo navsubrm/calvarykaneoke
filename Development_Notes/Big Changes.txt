@@ -1,0 +1,10 @@
+1. Look at moving all large components to a page.  On componentize small reusable pieces.
+
+2. Use the Broadcast Channel api to create an edit page that is connected to the real page and shows updates in real time.  
+Or better yet, have it open a dummy page at a dev url to see changes before saving.  It would open up the page edit window to be managed more cleanly.
+
+It works.  Look at creating a completely separate edit branch with access control. 
+
+The user will navigate to the protected edit form, and select edit page.  That will open the page in a new tab and forward the page data back to the editor.  Open the editor channel.
+
+It could help also to separate the form bindings so that the forms don’t fail to load.  I could set the value on the page fetch.  Then it will push the updates to the page for viewing.  

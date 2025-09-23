@@ -71,7 +71,14 @@ export default [
 		location: 'footer-social',
 		type: 'link'
 	},
-	{ label: 'Live', href: '/', alt: 'Live Service', imgUrl: '', location: 'header', type: 'link' },
+	{
+		label: 'Live',
+		href: '/live',
+		alt: 'Live Service',
+		imgUrl: '',
+		location: 'header',
+		type: 'link'
+	},
 	{
 		label: 'Prophecy & Sermons',
 		href: '',
@@ -106,7 +113,7 @@ export default [
 			}
 		]
 	},
-	{ label: "ABC's", href: '/abcs', alt: "ABC's", imgUrl: '', location: 'header', type: 'link' },
+	{ label: "ABC's", href: '/abc', alt: "ABC's", imgUrl: '', location: 'header', type: 'link' },
 	{
 		label: 'Exemption',
 		href: '/exemption',

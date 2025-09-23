@@ -3,7 +3,8 @@
 	import Editor from './utils/Editor.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
 	import blank from './utils/blank';
-	import SocialFooter from '../SocialFooter/index.svelte';
+	import SocialFooter from '$lib/components/SocialFooter/index.svelte';
+	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.liveStream, blank));
@@ -15,7 +16,7 @@
 		pageData = componentDataConverter(page?.data?.liveStream, blank);
 	});
 
-	$inspect('Page data from livestream: ', pageData);
+	//$inspect('Page data from livestream: ', pageData);
 
 	function checkAlternateSources() {
 		if (!streamPlayer) return;
@@ -53,11 +54,16 @@
 
 		<div class="title-block">
 			<h3>JD Farag Live Stream Schedule</h3>
-			<button class="button" onclick={checkAlternateSources}
-				>Watch {pageData?.content?.streams[
-					index < pageData?.content?.streams.length - 1 ? index + 1 : 0
-				].title} Livestream</button
-			>
+			<MainButton
+				onclick={checkAlternateSources}
+				label={`Watch ${
+					pageData?.content?.streams[index < pageData?.content?.streams.length - 1 ? index + 1 : 0]
+						.title
+				} Livestream`}
+			/>
+			<!-- <button class="button" onclick={checkAlternateSources}>
+				
+			</button> -->
 		</div>
 		<div class="general-content">
 			{#if pageData?.content.general_content}
@@ -139,7 +145,7 @@
 
 	.general-content {
 		margin-top: 1em;
-		border-bottom: solid 1px var(--deep-purple);
+		/* border-bottom: solid 1px var(--deep-purple); */
 		padding-bottom: 2em;
 	}
 

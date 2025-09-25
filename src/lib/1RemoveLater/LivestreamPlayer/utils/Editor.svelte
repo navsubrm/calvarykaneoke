@@ -3,7 +3,7 @@
 	import General from '$lib/userInputs/general/General.svelte';
 	import SelectInput from '$lib/userInputs/select/SelectInput.svelte';
 	import QuillInput from '$lib/userInputs/quillInput/QuillInput.svelte';
-	import { colorArray } from '$lib/config/colorArray';
+	import { colorArray } from '$lib/config/selectInputOptionArrays';
 
 	let { pageData = $bindable(), reset = $bindable(false) } = $props();
 

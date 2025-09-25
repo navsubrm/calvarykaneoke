@@ -1,7 +1,7 @@
 import { type Actions, type RequestEvent } from '@sveltejs/kit';
 import * as Page from '$lib/server/pageCRUD.js';
 import * as CRUD from '$lib/server/CRUD.js';
-import { setHeroContent } from '$lib/components/Hero/utils/dbActions.js';
+import { setHeroContent } from '../[[lang]]/(public)/(home)/utils/Hero/utils/dbActions.js';
 //import { setLargeLinkFormDataContent } from '$lib/components/LargeImageLink/utils/dbActions.js';
 //import { setWideSpacedContent } from '$lib/components/WideSpacedContent/utils/dbActions.js';
 //import { setTriPictureContent } from '$lib/components/TriPicture/utils/dbActions.js';

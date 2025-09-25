@@ -2,12 +2,14 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		type Page = {
+		type Pages = {
 			_id?: string;
 			name: string;
 			route: string;
-			page_content: unknown;
-			meta_data: unknown;
+			type: string;
+			language: string;
+			content: string | unknown;
+			meta_data: string | undefined;
 			created_at?: string | undefined;
 			updated_at?: string | undefined;
 			version?: number | undefined;
@@ -17,29 +19,16 @@ declare global {
 			_id?: string;
 			component_type: string;
 			component_name: string;
-			content: string | any;
+			component_language: string;
+			content: string | unknown;
 			created_at?: string | undefined;
 			updated_at?: string | undefined;
 			version?: number | undefined;
 		};
 
-		type Hero = {
-			background_image_url: string;
-			hero_icon_content: string;
-			hero_title_content: string;
-			sub_title_left: string;
-			sub_title_right: string;
-		};
-
-		type CurrentSermonLink = {
-			component_height: number;
-			background_image_url: string;
-			main_image: {
-				href: string;
-				url: string;
-				alt: string;
-			};
-		};
+		interface FormData {
+			[key: string]: FormDataEntryValue;
+		}
 
 		interface Platform {
 			env: {

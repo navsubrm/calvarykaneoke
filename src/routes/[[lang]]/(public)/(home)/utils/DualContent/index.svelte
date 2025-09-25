@@ -1,36 +1,37 @@
 <script>
-	import { page } from '$app/state';
-	import Editor from './utils/Editor.svelte';
-	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blank from './utils/blank';
+	let { data } = $props();
+	// import { page } from '$app/state';
+	// import Editor from './utils/Editor.svelte';
+	// import { componentDataConverter } from '$lib/config/componentDataConverter';
+	// import blank from './utils/blank';
 
-	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.wideContent, blank));
+	// let reset = $state(false);
+	// let pageData = $state(componentDataConverter(page?.data?.wideContent, blank));
 
-	$effect(() => {
-		reset;
-		pageData = componentDataConverter(page?.data?.wideContent, blank);
-	});
+	// $effect(() => {
+	// 	reset;
+	// 	pageData = componentDataConverter(page?.data?.wideContent, blank);
+	// });
 </script>
 
 <section
 	style="
-        --_component-height: {pageData?.content?.component_height}vh; 
-        --_background-color: {pageData?.content?.background_color?.value};
-        --_background-image: url({pageData?.content?.background_image_url});"
+        --_component-height: {data?.component_height}vh; 
+        --_background-color: {data?.background_color?.value || data?.background_color || 'white'};
+        --_background-image: url({data?.background_image_url});"
 >
-	<Editor bind:pageData bind:reset />
+	<!-- <Editor bind:pageData bind:reset /> -->
 	<div class="upper-content-area">
-		{#if pageData?.content?.wide_content}
+		{#if data?.wide_content}
 			<div class="upper-content">
-				{@html JSON.parse(pageData?.content?.wide_content)?.html}
+				{@html JSON.parse(data?.wide_content)?.html}
 			</div>
 		{/if}
 	</div>
 	<div class="lower-content-area">
-		{#if pageData?.content?.narrow_content}
+		{#if data?.narrow_content}
 			<div class="lower-content">
-				{@html JSON.parse(pageData?.content?.narrow_content)?.html}
+				{@html JSON.parse(data?.narrow_content)?.html}
 			</div>
 		{/if}
 	</div>

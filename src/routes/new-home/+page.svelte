@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	// import Editor from './utils/Editor.svelte';
-	import ChevronAnimation from '$lib/components/Hero/utils/ChevronAnimation.svelte';
+	import ChevronAnimation from '../[[lang]]/(public)/(home)/utils/Hero/utils/ChevronAnimation.svelte';
 	import { componentDataConverter } from '$lib/config/componentDataConverter';
 	import { onDestroy, onMount } from 'svelte';
 	import blank from './utils/blank';

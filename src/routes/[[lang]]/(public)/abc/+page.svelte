@@ -13,8 +13,6 @@
 		reset;
 		pageData = componentDataConverter(page?.data?.pageContent, blank);
 	});
-
-	//$inspect('Page data from livestream: ', pageData);
 </script>
 
 <section

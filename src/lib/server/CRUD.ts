@@ -1,33 +1,37 @@
-const tableName = 'components';
+const tableName = 'pages';
 type Content = App.Components;
 
-export async function update(platform: App.Platform | undefined, content: App.Components) {
-	const item: Content | undefined = await queryNewestRecordByPage(platform, content.component_name);
-
-	console.log('Item from post: ', item);
+export async function update(platform: App.Platform | undefined, content: App.Pages) {
+	const item: Content | undefined = await queryNewestRecordByPage(platform, content.name);
 
 	const created_at = item?.created_at || new Date().toISOString();
 	const updated_at = new Date().toISOString();
 	const version = (item?.version as number) + 1 || 1;
 
 	try {
-		const result = platform?.env?.DB?.prepare(
+		const result = await platform?.env?.DB?.prepare(
 			`
         INSERT INTO ${tableName} 
             (_id, 
-			component_type, 
-			component_name, 
+			name,
+			route,
+			type, 
+			language,
 			content,
+			meta_data,
 			created_at, 
 			updated_at, 
 			version) 
-        VALUES (?1,?2,?3,?4,?5,?6,?7)`
+        VALUES (?1,?2,?3,?4,?5,?6,?7, ?8, ?9, ?10)`
 		)
 			.bind(
 				crypto.randomUUID(),
-				content.component_type,
-				content.component_name,
+				content.name,
+				content.route,
+				content.type,
+				content.language,
 				content.content,
+				content.meta_data,
 				created_at,
 				updated_at,
 				version
@@ -57,7 +61,7 @@ export async function queryByLimit(platform: App.Platform | undefined, limit: nu
 
 export async function queryNewestRecordByPage(platform: App.Platform | undefined, name: string) {
 	const newest = await platform?.env?.DB.prepare(
-		`SELECT * FROM ${tableName} WHERE component_name = "${name}" ORDER BY updated_at DESC LIMIT 1`
+		`SELECT * FROM ${tableName} WHERE name = "${name}" ORDER BY updated_at DESC LIMIT 1`
 	).run();
 
 	if (!newest || !newest.success || newest?.results.length == 0) return undefined;

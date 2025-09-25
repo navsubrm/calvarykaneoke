@@ -1,4 +1,3 @@
-// src/lib/routes.js (or similar location)
 export async function getAllRoutes() {
 	const modules = import.meta.glob('/src/routes/**/+page.svelte');
 	const routes = Object.keys(modules).map((path) => {

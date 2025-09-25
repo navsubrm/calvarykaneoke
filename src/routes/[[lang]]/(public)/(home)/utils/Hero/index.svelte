@@ -1,41 +1,30 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import Editor from './utils/Editor.svelte';
 	import ChevronAnimation from './utils/ChevronAnimation.svelte';
-	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blank from './utils/blank';
 
-	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.hero, blank));
-
-	$effect(() => {
-		reset;
-		pageData = componentDataConverter(page?.data?.hero, blank);
-	});
+	let { data } = $props();
 </script>
 
-<section style="--_background-img: url({pageData?.content?.background_image_url});">
-	<Editor bind:pageData bind:reset />
+<section style="--_background-img: url({data?.background_image_url});">
 	<div class="main-content">
-		{#if pageData?.content?.hero_icon_content}
+		{#if data?.hero_icon_content}
 			<div class="title-header-icon">
-				<h3>{pageData?.content?.hero_icon_content}</h3>
+				<h3>{data?.hero_icon_content}</h3>
 			</div>
 		{/if}
 
-		{#if pageData?.content?.hero_title_content}
+		{#if data?.hero_title_content}
 			<div class="main-title">
-				<h1>{pageData?.content?.hero_title_content}</h1>
+				<h1>{data?.hero_title_content}</h1>
 			</div>
 		{/if}
 
-		{#if pageData?.content?.sub_title_left && pageData?.content?.sub_title_right}
+		{#if data?.sub_title_left && data?.sub_title_right}
 			<div class="sub-title">
 				<div class="sub-title-a">
-					{@html JSON.parse(pageData?.content?.sub_title_left)?.html}
+					{@html JSON.parse(data?.sub_title_left)?.html}
 				</div>
 				<div class="sub-title-b">
-					{@html JSON.parse(pageData?.content?.sub_title_right)?.html}
+					{@html JSON.parse(data?.sub_title_right)?.html}
 				</div>
 			</div>
 		{/if}

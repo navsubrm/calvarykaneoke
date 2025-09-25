@@ -1,6 +1,6 @@
 const tableName = 'pages';
 
-export async function update(platform: App.Platform | undefined, content: App.Page) {
+export async function update(platform: App.Platform | undefined, content: App.Pages) {
 	/**
 	 * ! I feel like I need to think harder on this and check for duplicates in some way.
 	 */

@@ -3,8 +3,9 @@ CREATE TABLE IF NOT EXISTS "pages" (
     "_id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT,
     "route" TEXT,
-    "page_type" TEXT,
-    "page_content" TEXT,
+    "type" TEXT,
+    "language" TEXT,
+    "content" TEXT,
         -- [component_type-component_name]
     "meta_data" TEXT,
     "created_at" INTEGER,
@@ -22,15 +23,16 @@ CREATE TABLE IF NOT EXISTS "pages" (
 --     "version" INTEGER
 -- );
 
-CREATE TABLE IF NOT EXISTS "components"(
-    "_id" TEXT NOT NULL PRIMARY KEY,
-    "component_type" TEXT,
-    "component_name" TEXT,
-    "content" TEXT,
-    "created_at" INTEGER,
-    "updated_at" INTEGER,
-    "version" INTEGER
-);
+-- CREATE TABLE IF NOT EXISTS "components"(
+--     "_id" TEXT NOT NULL PRIMARY KEY,
+--     "component_type" TEXT,
+--     "component_name" TEXT,
+--     "component_language" TEXT,
+--     "content" TEXT,
+--     "created_at" INTEGER,
+--     "updated_at" INTEGER,
+--     "version" INTEGER
+-- );
 
 --     "background_image_url" TEXT,
 --     "hero_icon_content" TEXT,

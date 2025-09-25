@@ -1,11 +1,13 @@
-export function componentDataConverter(data: App.Components, newInstance: App.Components) {
+export function componentDataConverter(data: App.Pages, newInstance: App.Pages) {
 	if (!data) return newInstance;
 	const newData = {
-		component_type: data?.component_type,
-		component_name: data?.component_name,
-		content: JSON.parse(data?.content)
+		name: data?.name,
+		route: data?.route,
+		type: data?.type,
+		language: data?.language,
+		content: JSON.parse(data?.content as string)
 	};
 
-	if (!newData.component_type || !newData.component_name) return newInstance;
+	if (!newData.type || !newData.name) return newInstance;
 	return newData;
 }

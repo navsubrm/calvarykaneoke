@@ -1,42 +1,41 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import Editor from './utils/Editor.svelte';
-	import { componentDataConverter } from '$lib/config/componentDataConverter';
+	//import { page } from '$app/state';
+	//import Editor from './utils/Editor.svelte';
+	//import { componentDataConverter } from '$lib/config/componentDataConverter';
 	import isJson from '$lib/config/isJson';
-	import blank from './utils/blank';
+	// import blank from './utils/blank';
 
-	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.triPicture, blank));
+	let { data } = $props();
 
-	$effect(() => {
-		reset;
-		pageData = componentDataConverter(page?.data?.triPicture, blank);
-	});
+	// let reset = $state(false);
+	// let pageData = $state(componentDataConverter(page?.data?.triPicture, blank));
+
+	// $effect(() => {
+	// 	reset;
+	// 	pageData = componentDataConverter(page?.data?.triPicture, blank);
+	// });
 </script>
 
 <section
 	class="flex"
-	style="--_bg-upper-color: {pageData?.content?.background_upper_color?.value}; 
-		--_bg-lower-color: {pageData?.content?.background_lower_color?.value}"
+	style="--_bg-upper-color: {data?.background_upper_color?.value}; 
+		--_bg-lower-color: {data?.background_lower_color?.value}"
 >
-	<Editor bind:pageData bind:reset />
+	<!-- <Editor bind:pageData bind:reset /> -->
 	<div class="flex container">
-		{#if pageData?.content?.primary_content}
+		{#if data?.primary_content}
 			<a
-				href={pageData?.content?.primary_content?.link?.href}
+				href={data?.primary_content?.link?.href}
 				class="large-image"
-				title={pageData?.content?.primary_content?.link?.alt}
+				title={data?.primary_content?.link?.alt}
 			>
-				<p>{pageData?.content?.primary_content?.link?.label}</p>
-				<img
-					src={pageData?.content?.primary_content?.image?.src}
-					alt={pageData?.content?.primary_content?.image?.alt}
-				/>
+				<p>{data?.primary_content?.link?.label}</p>
+				<img src={data?.primary_content?.image?.src} alt={data?.primary_content?.image?.alt} />
 			</a>
 		{/if}
 		<div class="flex content-block-container">
-			{#if pageData?.content?.aside_content}
-				{#each pageData?.content?.aside_content as { image, content, link }}
+			{#if data?.aside_content}
+				{#each data?.aside_content as { image, content, link }}
 					<div class="flex content-block">
 						<a href={link?.href} class="content-block-img-a" title={link?.alt}>
 							<img src={image?.src} alt={link?.alt} />

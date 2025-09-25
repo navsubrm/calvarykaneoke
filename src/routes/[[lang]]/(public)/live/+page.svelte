@@ -16,8 +16,6 @@
 		pageData = componentDataConverter(page?.data?.liveStream, blank);
 	});
 
-	//$inspect('Page data from livestream: ', pageData);
-
 	function checkAlternateSources() {
 		if (!streamPlayer) return;
 		console.log(index, pageData?.content?.streams.length);

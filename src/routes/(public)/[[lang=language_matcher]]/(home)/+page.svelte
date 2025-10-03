@@ -8,6 +8,8 @@
 	import blank from '$lib/config/dataModels/Home';
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
+	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
+	import Editor from '../exemption/utils/Editor.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -37,8 +39,9 @@
 	<title>{pageData?.meta_data?.title}</title>
 </svelte:head>
 
-<!-- Add in the meta data for the page. -->
+<EditorNotice bind:editor />
 
+<!-- Add in the meta data for the page. -->
 <Hero data={pageData?.content?.hero} />
 <LargeImageLink data={pageData?.content?.large_image} />
 <DualContent data={pageData?.content?.dual_content} />

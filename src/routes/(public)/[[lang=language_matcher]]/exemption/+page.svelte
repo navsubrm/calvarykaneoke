@@ -7,6 +7,7 @@
 	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
 	import SocialFooter from '$lib/components/SocialFooter/index.svelte';
+	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -32,14 +33,16 @@
 	onDestroy(() => editor?.close());
 </script>
 
+<EditorNotice bind:editor />
+
 <section
 	style="--_component-height: {pageData?.content?.component_height}vh; 
-		--_background-base: {pageData?.content?.background_color?.base ||
-		pageData?.content?.background_color?.base?.value};
-		--_gradient-upper: {pageData?.content?.background_color?.upper ||
-		pageData?.content?.background_color?.upper?.value};
-		--_gradient-lower: {pageData?.content?.background_color?.lower ||
-		pageData?.content?.background_color?.lower?.value};"
+		--_background-base: {pageData?.content?.background_color?.base?.value ||
+		pageData?.content?.background_color?.base};
+		--_gradient-upper: {pageData?.content?.background_color?.upper?.value ||
+		pageData?.content?.background_color?.upper};
+		--_gradient-lower: {pageData?.content?.background_color?.lower?.value ||
+		pageData?.content?.background_color?.lower};"
 >
 	<div class="content">
 		<GeneralContentBlock

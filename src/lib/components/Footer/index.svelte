@@ -85,6 +85,11 @@
 		padding-top: 2.5em;
 	}
 
+	.nav-links :global(a:hover) {
+		color: var(--floral-white);
+		transition: all 0.5s ease-in-out;
+	}
+
 	.social-link-img {
 		filter: brightness(2.9) grayscale(1);
 		opacity: 0.6;

@@ -7,6 +7,7 @@
 	import blank from '$lib/config/dataModels/Abc';
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
+	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -38,15 +39,16 @@
 	<title>{pageData?.meta_data?.title}</title>
 </svelte:head>
 
+<EditorNotice bind:editor />
 <section
 	style="--_component-height: {pageData?.content?.component_height}vh; 
 		--_background-img: url({pageData?.content?.background_image?.url});
-		--_background-base: {pageData?.content?.background_color ||
-		pageData?.content?.background_color?.value};
-		--_gradient-upper: {pageData?.content?.gradient_upper || pageData?.content?.gradient_upper?.value};
-		--_gradient-middle: {pageData?.content?.gradient_middle ||
-		pageData?.content?.gradient_middle?.value};
-		--_gradient-lower: {pageData?.content?.gradient_lower || pageData?.content?.gradient_lower?.value};"
+		--_background-base: {pageData?.content?.background_color?.value ||
+		pageData?.content?.background_color};
+		--_gradient-upper: {pageData?.content?.gradient_upper?.value || pageData?.content?.gradient_upper};
+		--_gradient-middle: {pageData?.content?.gradient_middle?.value ||
+		pageData?.content?.gradient_middle};
+		--_gradient-lower: {pageData?.content?.gradient_lower?.value || pageData?.content?.gradient_lower};"
 >
 	<div class="content">
 		<GeneralContentBlock

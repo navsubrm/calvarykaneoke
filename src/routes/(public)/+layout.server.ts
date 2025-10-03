@@ -6,6 +6,8 @@ import type { LayoutServerLoad } from './$types';
 import { match } from '$params/language_matcher';
 
 export const load: LayoutServerLoad = async ({ platform, params, cookies, request, url }) => {
+	if (url.searchParams.get('mode') == 'edit')
+		return { links: Layout.links, header: Layout.header, footer: Layout.footer };
 	console.log('Request from public layout: ', params.lang);
 
 	// If the language param is missing

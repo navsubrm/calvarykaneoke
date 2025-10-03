@@ -6,6 +6,7 @@
 	import { goto } from '$app/navigation';
 	import SocialFooter from '$lib/components/SocialFooter/index.svelte';
 	import LivestreamPlayer from '$lib/components/LivestreamPlayer/index.svelte';
+	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -35,12 +36,14 @@
 	<title>{pageData?.meta_data?.title}</title>
 </svelte:head>
 
+<EditorNotice bind:editor />
+
 <section
 	style="--_component-height: {pageData?.content?.component_height}vh; 
-		--_background-base: {pageData?.content?.background_color ||
-		pageData?.content?.background_color?.value};
-		--_gradient-upper: {pageData?.content?.gradient_upper || pageData?.content?.gradient_upper?.value};
-		--_gradient-lower: {pageData?.content?.gradient_lower || pageData?.content?.gradient_lower?.value};"
+		--_background-base: {pageData?.content?.background_color?.value ||
+		pageData?.content?.background_color};
+		--_gradient-upper: {pageData?.content?.gradient_upper?.value || pageData?.content?.gradient_upper};
+		--_gradient-lower: {pageData?.content?.gradient_lower?.value || pageData?.content?.gradient_lower};"
 >
 	<div class="content">
 		<LivestreamPlayer bind:pageData />
@@ -54,7 +57,7 @@
 	</div>
 </section>
 
-<style type="text/css">
+<style>
 	section {
 		position: relative;
 		--_footer-padding: 2.5em;
@@ -77,7 +80,6 @@
 
 	.general-content {
 		margin-top: 1em;
-		/* border-bottom: solid 1px var(--deep-purple); */
 		padding-bottom: 2em;
 	}
 

@@ -148,7 +148,7 @@
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.gradient_upper}
+							bind:value={pageData.content.background_color.upper}
 						/>
 					</div>
 
@@ -161,7 +161,7 @@
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.gradient_middle}
+							bind:value={pageData.content.background_color.lower}
 						/>
 					</div>
 				</fieldset>

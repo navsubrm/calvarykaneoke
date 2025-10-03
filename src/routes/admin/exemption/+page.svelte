@@ -4,24 +4,23 @@
 	import { onDestroy } from 'svelte';
 	import { setTheme } from '$lib/config/theme/setTheme';
 	import { enhance } from '$app/forms';
-	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 	import General from '$lib/userInputs/general/General.svelte';
-	import SelectInput from '$lib/userInputs/select/SelectInput.svelte';
 	import QuillInput from '$lib/userInputs/quillInput/QuillInput.svelte';
+	import MainButton from '$lib/userInputs/MainButton/index.svelte';
+	import SelectInput from '$lib/userInputs/select/SelectInput.svelte';
 	import Submit from '$lib/userInputs/submit/Submit.svelte';
 	import FormButton from '$lib/userInputs/button/FormButton.svelte';
 	import languageSelectOptions from '$lib/config/optionArrays/languageSelectOptions';
 	import colorSelectOptions from '$lib/config/optionArrays/colorSelectOptions';
-	import LivestreamInputs from '$lib/components/LivestreamPlayer/utils/Inputs.svelte';
 	import SocialFooterInputs from '$lib/components/SocialFooter/utils/Inputs.svelte';
 	import MetaDataInputs from '$lib/components/MetaData/utils/Inputs.svelte';
 
 	/**
-	 * !! Update for each page.
-	 */
-	import blank from '$lib/config/dataModels/Live';
-	const pageId: string = $state('live');
-	const pageRoute: string = $state('/live');
+	 * !! Update with each page.
+	 * */
+	import blank from '$lib/config/dataModels/Exemption';
+	const pageId: string = $state('exemption');
+	const pageRoute: string = $state('/exemption');
 
 	const action: string = $state('?/set-page-content');
 	const label: string = $state('Update Page Content');
@@ -43,6 +42,7 @@
 		reset;
 		pageData = componentDataConverter(page?.data?.page, blank);
 	});
+
 	$effect(() => updateContent());
 
 	onDestroy(() => editor?.close());
@@ -68,12 +68,12 @@
 
 <svelte:head>
 	<link rel="stylesheet" href="/styles/editor_page.css" />
-	<title>Live Stream Page Editor</title>
+	<title>Exemption Page Editor</title>
 </svelte:head>
 
 <section style="--_background: var({theme.one}); --_text: var({theme.two})">
 	<div class="page-header">
-		<h1>Live Page Editor</h1>
+		<h1>Exemption Page Editor</h1>
 		<MainButton label="Start Editor View" onclick={startEditor} />
 	</div>
 	{#if !pageData}
@@ -86,7 +86,6 @@
 			use:enhance={() => {
 				processing = true;
 				return ({ result }) => {
-					console.log('Result from form: ', result);
 					processing = false;
 				};
 			}}
@@ -96,8 +95,8 @@
 				<fieldset>
 					<legend>General Page Items</legend>
 					<input type="hidden" name="name" value={pageId} />
-					<input type="hidden" name="type" value={'page'} />
 					<input type="hidden" name="route" value={pageRoute} />
+					<input type="hidden" name="type" value={'page'} />
 
 					<div class="input">
 						<SelectInput
@@ -130,19 +129,19 @@
 
 					<div class="input">
 						<SelectInput
-							name="background_color"
+							name="background_color_base"
 							label="Background Color"
 							placeholder="Select the background base color."
 							required={true}
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.background_color}
+							bind:value={pageData.content.background_color.base}
 						/>
 					</div>
 					<div class="input">
 						<SelectInput
-							name="gradient_upper"
+							name="background_color_upper"
 							label="Gradient Upper Color"
 							placeholder="Select the upper gradient color."
 							required={true}
@@ -152,38 +151,91 @@
 							bind:value={pageData.content.gradient_upper}
 						/>
 					</div>
+
 					<div class="input">
 						<SelectInput
-							name="gradient_lower"
-							label="Gradient Lower Color"
-							placeholder="Select the lower gradient color."
+							name="background_color_lower"
+							label="Gradient Middle Color"
+							placeholder="Select the middle gradient color."
 							required={true}
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.gradient_lower}
+							bind:value={pageData.content.gradient_middle}
 						/>
 					</div>
 				</fieldset>
 			</details>
 
 			<details>
-				<summary>Livestream Player</summary>
-				<LivestreamInputs bind:pageData />
-			</details>
-
-			<details>
 				<summary>General Content</summary>
 				<fieldset>
-					<legend>Content</legend>
+					<legend>Upper Content</legend>
 
 					<div class="editor">
 						<QuillInput
-							name="general_content"
-							label="Provide General Content"
-							placeholder="Enter the content you want displayed below the livestream."
+							name="general_content_upper"
+							label="Provide Upper Content"
+							placeholder="Enter the content you want displayed above the video."
 							themeBase={'One'}
-							bind:value={pageData.content.general_content}
+							bind:value={pageData.content.general_content.upper}
+						/>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Middle Content</legend>
+
+					<div class="editor">
+						<QuillInput
+							name="general_content_middle"
+							label="Provide Middle Content"
+							placeholder="Enter the content you want displayed above the video."
+							themeBase={'One'}
+							bind:value={pageData.content.general_content.middle}
+						/>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Lower Content</legend>
+					<div class="editor">
+						<QuillInput
+							name="general_content_lower"
+							label="Provide Lower Content"
+							placeholder="Enter the content you want displayed below the video."
+							themeBase={'One'}
+							bind:value={pageData.content.general_content.lower}
+						/>
+					</div>
+				</fieldset>
+			</details>
+
+			<details>
+				<summary>Button Content</summary>
+				<fieldset>
+					<legend>Button Label and Link Reference</legend>
+					<div class="input">
+						<General
+							name="button_label"
+							label="Button Label Text"
+							placeholder="Enter label for Link Button"
+							type={'text'}
+							required={true}
+							themeBase={'One'}
+							bind:value={pageData.content.button.label}
+						/>
+					</div>
+
+					<div class="input">
+						<General
+							name="button_href"
+							label="Button Reference URL"
+							placeholder="Enter button destination URL."
+							type={'text'}
+							required={true}
+							themeBase={'One'}
+							bind:value={pageData.content.button.href}
 						/>
 					</div>
 				</fieldset>
@@ -194,7 +246,7 @@
 				<SocialFooterInputs bind:pageData />
 			</details>
 
-			<MetaDataInputs {pageData} />
+			<MetaDataInputs bind:pageData />
 
 			<Submit
 				{label}

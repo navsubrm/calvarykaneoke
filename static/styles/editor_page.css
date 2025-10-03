@@ -5,6 +5,16 @@ section {
 	background: var(--_background);
 }
 
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.page-header h1 {
+	color: var(--_text)
+}
+
 a {
 	color: var(--_text);
 }

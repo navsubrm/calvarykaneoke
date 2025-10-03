@@ -36,6 +36,7 @@ declare global {
 				TEMPLATE: string;
 				IS_DEV: boolean;
 				ASSETS: Fetcher;
+				NODE_ENV: string;
 			};
 			cf: CfProperties;
 			ctx: ExecutionContext;

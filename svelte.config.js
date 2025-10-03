@@ -16,7 +16,10 @@ const config = {
 				include: ['/*'],
 				exclude: ['<all>']
 			}
-		})
+		}),
+		alias: {
+			$params: './src/params'
+		}
 	}
 };
 

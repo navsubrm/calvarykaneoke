@@ -121,7 +121,7 @@ export default {
 		},
 		{
 			label: "ABC's",
-			href: '/salvation-abcs',
+			href: '/abc',
 			alt: "ABC's",
 			imgUrl: '',
 			location: 'header',

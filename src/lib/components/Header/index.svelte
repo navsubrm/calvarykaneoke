@@ -41,7 +41,11 @@
 			{#each links as link}
 				{#if link.location == 'header' && link.type == 'link'}
 					<li class="hoverable">
-						<a href={link.href} title={link.alt}>{link.label}</a>
+						<a
+							href={link.href}
+							title={link.alt}
+							class:current={page?.url.pathname.includes(link.href)}>{link.label}</a
+						>
 					</li>
 				{:else if link.location == 'header' && link.type == 'menu'}
 					<SubMenu menu={link} />
@@ -111,6 +115,10 @@
 	}
 
 	.hoverable:hover :global(:where(a)) {
+		color: var(--burlywood);
+	}
+
+	.current {
 		color: var(--burlywood);
 	}
 

@@ -73,7 +73,10 @@
 </svelte:head>
 
 <section style="--_background: var({theme.one}); --_text: var({theme.two})">
-	<MainButton label="Start Editor View" onclick={startEditor} />
+	<div class="page-header">
+		<h1>ABC Page Editor</h1>
+		<MainButton label="Start Editor View" onclick={startEditor} />
+	</div>
 	{#if !pageData}
 		<p>Loading...</p>
 	{:else}

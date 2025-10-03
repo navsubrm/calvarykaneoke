@@ -6,6 +6,7 @@ export default class QuillInit {
 	input: QuillInitInputObject;
 	editor: Quill;
 	value: string;
+	bg: boolean;
 
 	constructor(input: QuillInitInputObject, value: string) {
 		this.input = $state(input);
@@ -20,6 +21,7 @@ export default class QuillInit {
 			})
 		);
 		this.value = $state(value);
+		this.bg = $state(this.value ? JSON.parse(this.value)?.bg : false);
 		this.editorInit();
 	}
 
@@ -35,10 +37,16 @@ export default class QuillInit {
 			if (source == 'user' || answer)
 				this.value = JSON.stringify({
 					styled: this.editor.getContents(),
-					html: this.editor.getSemanticHTML().replaceAll('&nbsp;', ' ')
+					html: this.editor.getSemanticHTML().replaceAll('&nbsp;', ' '),
+					bg: this.bg
 				});
 
 			console.log('Updated Value: ', this.value);
 		});
+	}
+
+	handleInputBGChange(bg: boolean) {
+		this.bg = bg;
+		if (this.value) this.value = JSON.stringify({ ...JSON.parse(this.value), bg: this.bg });
 	}
 }

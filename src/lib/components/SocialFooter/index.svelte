@@ -1,17 +1,7 @@
 <script>
-	import { page } from '$app/state';
-	import Editor from './utils/Editor.svelte';
-	import { componentDataConverter } from '$lib/config/componentDataConverter';
-	import blank from './utils/blank';
 	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 
-	let reset = $state(false);
-	let pageData = $state(componentDataConverter(page?.data?.socialFooter, blank));
-
-	$effect(() => {
-		reset;
-		pageData = componentDataConverter(page?.data?.socialFooter, blank);
-	});
+	let { pageData = $bindable() } = $props();
 </script>
 
 <svelte:head>
@@ -23,14 +13,13 @@
 </svelte:head>
 
 <div class="component-footer">
-	<Editor bind:pageData bind:reset />
 	<div class="share-items">
 		<p>Share:</p>
 		<span class="facebook">
 			<a
 				aria-label="Share on Facebook"
 				href="https://www.facebook.com/sharer/sharer.php?u=https://{encodeURIComponent(
-					pageData?.content?.facebook_share_link
+					pageData?.content?.social_footer?.facebook_share_link
 				)}"
 				target="_blank"
 			>
@@ -60,7 +49,7 @@
 				aria-label="Share on X"
 				class="twitter-share-button"
 				href="https://twitter.com/intent/tweet?text={encodeURIComponent(
-					pageData?.content?.x_post_text
+					pageData?.content?.social_footer?.x_post_text
 				)}"
 				data-size="large"
 				target="_blank"
@@ -84,8 +73,8 @@
 			<a
 				aria-label="Share with Email"
 				href="mailto:?subject={encodeURIComponent(
-					pageData?.content?.mail_to?.subject
-				)}&body={encodeURIComponent(pageData?.content?.mail_to?.body)}"
+					pageData?.content?.social_footer?.mail_to?.subject
+				)}&body={encodeURIComponent(pageData?.content?.social_footer?.mail_to?.body)}"
 				target="_blank"
 			>
 				<svg

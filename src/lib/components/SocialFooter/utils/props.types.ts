@@ -10,14 +10,12 @@ type Content = {
 };
 
 type FormData = {
-	component_type: FormDataEntryValue;
-	component_name: FormDataEntryValue;
-	component_height: FormDataEntryValue;
-	background_color: FormDataEntryValue;
-	x_post_text: FormDataEntryValue;
-	facebook_share_link: FormDataEntryValue;
-	mail_to_subject: FormDataEntryValue;
-	mail_to_body: FormDataEntryValue;
+	social_footer_component_height: FormDataEntryValue;
+	social_footer_background_color: FormDataEntryValue;
+	social_footer_x_post_text: FormDataEntryValue;
+	social_footer_facebook_share_link: FormDataEntryValue;
+	social_footer_mail_to_subject: FormDataEntryValue;
+	social_footer_mail_to_body: FormDataEntryValue;
 };
 
 export type { Content, FormData };

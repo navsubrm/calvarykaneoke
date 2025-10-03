@@ -1,7 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import { type Actions, type RequestEvent } from '@sveltejs/kit';
 import * as CRUD from '$lib/server/CRUD.js';
-import isJson from '$lib/config/isJson.js';
+import isJson from '$lib/config/helperFunctions/isJson.js';
 
 export async function load({ platform }) {
 	return {
@@ -41,8 +41,11 @@ async function setContent({ platform, request }: RequestEvent) {
 			},
 			dual_content: {
 				component_height: Number(formData?.dual_content_component_height || 0),
-				background_color: isJson(formData?.dual_content_background_color.toString())
-					? JSON.parse(formData?.dual_content_background_color.toString())?.value
+				background_color_upper: isJson(formData?.dual_content_background_color_upper.toString())
+					? JSON.parse(formData?.dual_content_background_color_upper.toString())?.value
+					: '',
+				background_color_lower: isJson(formData?.dual_content_background_color_lower.toString())
+					? JSON.parse(formData?.dual_content_background_color_lower.toString())?.value
 					: '',
 				background_image_url: formData?.dual_content_background_image_url.toString(),
 				wide_content: formData?.dual_content_wide_content.toString(),
@@ -92,7 +95,7 @@ async function setContent({ platform, request }: RequestEvent) {
 			}
 		}),
 		meta_data: JSON.stringify({
-			title: formData?.name.toString().charAt(0).toUpperCase() + formData?.name.slice(1)
+			title: formData?.meta_data_title.toString()
 		})
 	};
 

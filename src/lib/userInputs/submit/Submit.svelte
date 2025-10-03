@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setTheme } from '$lib/config/setTheme';
+	import { setTheme } from '$lib/config/theme/setTheme';
 	import type { props } from './utils/props.types';
 
 	let {

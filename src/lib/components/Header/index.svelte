@@ -3,8 +3,10 @@
 	import SubMenu from './utils/SubMenu.svelte';
 	import Hamburger from '$lib/icons/hamburger/Hamburger.svelte';
 	import { onNavigate } from '$app/navigation';
+	import Header from './utils/model';
 
 	const links = $state(page?.data?.links);
+	const logo_href = $state(page?.data?.header?.logo_link_href || Header.logo_link_href);
 	let container: HTMLElement = $state() as HTMLElement;
 	let active = $state(false);
 
@@ -25,7 +27,7 @@
 <svelte:window onclick={handleCloseMenu} />
 
 <header>
-	<h4>JD FARAG</h4>
+	<a href={logo_href}><h4>JD FARAG</h4></a>
 
 	<button onclick={handleShowMenu} class="narrow btn"><Hamburger bind:active /> </button>
 
@@ -79,6 +81,10 @@
 		padding-inline: 1em;
 		height: 70px;
 		z-index: 100;
+	}
+
+	header a {
+		text-decoration: none;
 	}
 
 	h4 {

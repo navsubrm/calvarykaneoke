@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
-	import { setTheme } from '$lib/config/setTheme';
+	import { setTheme } from '$lib/config/theme/setTheme';
 	import Hamburger from '$lib/icons/hamburger/Hamburger.svelte';
 	import Submit from '$lib/userInputs/submit/Submit.svelte';
 	import FormButton from '../button/FormButton.svelte';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { props } from './utils/props.types';
 	import InputMsg from '$lib/userInputs/inputMsg/InputMsg.svelte';
-	import { setTheme } from '$lib/config/setTheme';
+	import { setTheme } from '$lib/config/theme/setTheme';
 
 	let { name, label, required = false, messages = [], themeBase }: props = $props();
 

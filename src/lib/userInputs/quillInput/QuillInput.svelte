@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Label from '$lib/userInputs/label/Label.svelte';
-	import { setTheme } from '$lib/config/setTheme';
+	import { setTheme } from '$lib/config/theme/setTheme';
 	import { toolbarOptions as defaultToolBar } from './utils/toolbarOptions';
 	import type QuillInit from './utils/handleQuillSetup.svelte';
 	import type { Props } from './utils/props.types';
 	import 'quill/dist/quill.snow.css';
-	import General from '../general/General.svelte';
 	import Toggle from '$lib/icons/toggle/Toggle.svelte';
 
 	let {
@@ -39,11 +38,13 @@
 
 	$effect(() => {
 		if (didMount && quill) value = quill.value;
+		if (didMount && quill) inputBg = quill.bg;
 	});
 
 	function handleBgToggle(e: MouseEvent) {
 		e.preventDefault();
 		inputBg = !inputBg;
+		if (quill) quill.handleInputBGChange(inputBg);
 	}
 </script>
 
@@ -99,11 +100,11 @@
 
 	span {
 		background: transparent;
-		--_input-bg: var(--_background);
+		--_input-bg: color-mix(in lab, var(--_background), var(--_text) 10%);
 	}
 
 	.light-bg {
-		--_input-bg: var(--_text);
+		--_input-bg: color-mix(in lab, var(--_text), var(--_background) 10%);
 	}
 
 	span :global(> *) {
@@ -132,7 +133,7 @@
 	span:hover :global(.ql-container),
 	span:focus :global(.ql-container),
 	span:focus-within :global(.ql-container) {
-		background: var(--_background);
+		background: var(--_input-bg);
 	}
 
 	span :global(.ql-editor),
@@ -150,6 +151,7 @@
 
 	span :global(.ql-container) {
 		border-radius: 0 0 0.25em 0.25em;
+		background-color: var(--_input-bg);
 	}
 
 	span :global(.ql-toolbar) {
@@ -222,15 +224,7 @@
 		transform: translateY(15px) translateZ(-1);
 		height: 15px;
 		overflow: hidden;
-	}
-
-	.editor-container :global(.ql-container) {
-		transform: translateY(-15px);
-		background-color: var(--_input-bg);
-
-		@starting-style {
-			transform: translateY(0);
-		}
+		transition: all 0.25s linear allow-discrete;
 	}
 
 	.editor-container:focus :global(.ql-toolbar:hover),
@@ -248,14 +242,19 @@
 		}
 	}
 
+	.editor-container :global(.ql-container) {
+		transform: translateY(-15px);
+		background-color: var(--_input-bg);
+		transition: all 0.25s linear allow-discrete;
+
+		@starting-style {
+			transform: translateY(0);
+		}
+	}
+
 	.editor-container:focus :global(.ql-container),
 	.editor-container:focus-within :global(.ql-container) {
 		transform: unset;
-		background-color: var(--_input-bg);
-		transition: all 0.25s linear allow-discrete;
-	}
-
-	.editor-container:hover :global(.ql-container) {
 		background-color: var(--_input-bg);
 	}
 

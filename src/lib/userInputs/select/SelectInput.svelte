@@ -2,7 +2,7 @@
 	import Label from '$lib/userInputs/label/Label.svelte';
 	import Select from 'svelte-select';
 	import type { props } from './utils/propTypes.types';
-	import { setTheme } from '$lib/config/setTheme';
+	import { setTheme } from '$lib/config/theme/setTheme';
 
 	let {
 		name,

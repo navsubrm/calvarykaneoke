@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import MailingListForm from './utils/MailingListForm.svelte';
+	import Footer from './utils/model';
 
 	const links = $state(page?.data?.links);
+
+	let data = $state(page?.data?.footer || Footer);
 </script>
 
 <footer
 	class="flex"
 	style="
-		--_background: url({page?.data?.footer?.topBarImage}); 
-		--_component-height: {page?.data?.footer?.componentHeight}vh;
+		--_background: url({data?.topBarImage}); 
+		--_component-height: {data?.componentHeight}vh;
 	"
 >
 	<div class="top-bar"></div>

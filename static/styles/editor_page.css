@@ -1,0 +1,61 @@
+section {
+	padding-block: 10vh;
+	padding-inline: 5vw;
+	min-height: 100vh;
+	background: var(--_background);
+}
+
+a {
+	color: var(--_text);
+}
+
+form > * {
+	margin-block: 2em;
+}
+
+fieldset {
+	margin: 2em;
+	padding: 1em;
+	background: color-mix(in lab, var(--_background), black 30%);
+}
+
+legend {
+	color: var(--_text);
+	padding: 5px;
+}
+
+details summary,
+details::marker {
+	color: var(--_text);
+}
+
+details summary {
+	font-size: 1.3em;
+}
+
+details::marker {
+	margin-right: 1em;
+}
+
+section details {
+	border: solid 1px var(--_text);
+	padding: 1em;
+	overflow: hidden;
+	background: color-mix(in lab, var(--_background), black 30%);
+}
+
+details :global(.details-content) {
+	opacity: 0;
+	content-visibility: hidden;
+	/* height: fit-content; */
+	transition: all 0.5s linear allow-discrete;
+}
+
+details[open] :global(.details-content) {
+	opacity: 1;
+	content-visibility: visible;
+}
+
+.editor {
+	margin-block: 20px;
+}

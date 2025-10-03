@@ -1,6 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import { type Actions, type RequestEvent } from '@sveltejs/kit';
 import * as CRUD from '$lib/server/CRUD.js';
+import { handleStreamsFromForm } from '$lib/components/LivestreamPlayer/utils/handleStreamsFromForm.js';
 
 export async function load({ platform }) {
 	return {
@@ -17,6 +18,8 @@ export const actions: Actions = {
 async function setContent({ platform, request }: RequestEvent) {
 	const formData = Object.fromEntries(await request.formData());
 
+	console.log('Stream return Object: ', formData, handleStreamsFromForm(formData));
+
 	const pageData: App.Pages = {
 		name: formData.name.toString(),
 		type: formData.type.toString(),
@@ -27,7 +30,7 @@ async function setContent({ platform, request }: RequestEvent) {
 			background_color: JSON.parse(formData?.background_color.toString())?.value,
 			gradient_upper: JSON.parse(formData?.gradient_upper.toString())?.value,
 			gradient_lower: JSON.parse(formData?.gradient_lower.toString())?.value,
-			streams: JSON.parse(formData?.streams.toString()),
+			streams: handleStreamsFromForm(formData),
 			general_content: formData?.general_content.toString(),
 			social_footer: {
 				component_height: Number(formData?.social_footer_component_height),

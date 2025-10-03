@@ -4,27 +4,29 @@
 
 	let { pageData = $bindable() } = $props();
 
-	let streamArray = $state(pageData?.content?.streams);
+	let streamCount = $state(pageData?.content?.streams?.length || 1);
 
 	function addStream(e: MouseEvent) {
 		e.preventDefault();
-		pageData?.content?.streams.push({ title: '', src: '' });
+		pageData.content.streams = [...pageData?.content?.streams, { title: '', src: '' }];
+		streamCount = pageData.content.streams.length;
 	}
 
 	function deleteStream(e: MouseEvent, i: number) {
 		e.preventDefault();
-		pageData?.content?.streams.splice(i, 1);
+		pageData.content.streams = [
+			...pageData.content.streams.filter((_: unknown, index: number) => i !== index)
+		];
+		streamCount = pageData.content.streams.length;
 	}
-
-	$inspect('Streams Data: ', pageData.content);
 </script>
 
 <fieldset>
 	<legend>Stream Information</legend>
 	<MainButton label="Add New Stream" onclick={addStream} />
-	<input type="hidden" name="streams" value={JSON.stringify(streamArray)} />
+	<input type="hidden" name="stream_count" bind:value={streamCount} />
 
-	{#each { length: pageData.content.streams.length }, i}
+	{#each { length: streamCount }, i}
 		<fieldset>
 			<legend>Steam {i + 1}</legend>
 			<div>
@@ -36,7 +38,7 @@
 						type={'text'}
 						required={true}
 						themeBase={'One'}
-						bind:value={pageData.content.streams[i].title}
+						value={pageData?.content?.streams[i]?.title}
 					/>
 				</div>
 				<div class="editor">
@@ -47,7 +49,7 @@
 						type={'text'}
 						required={true}
 						themeBase={'One'}
-						bind:value={pageData.content.streams[i].src}
+						value={pageData?.content?.streams[i]?.src}
 					/>
 				</div>
 			</div>

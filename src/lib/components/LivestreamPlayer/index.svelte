@@ -5,6 +5,7 @@
 
 	let index = $state(0);
 	let streamPlayer: HTMLIFrameElement | undefined = $state();
+	let change = $state(false);
 
 	function checkAlternateSources() {
 		if (!streamPlayer) return;
@@ -15,24 +16,35 @@
 			index = 0;
 		}
 	}
+
+	function handleChange() {
+		change = true;
+		setTimeout(() => {
+			change = false;
+		}, 150);
+	}
+
+	$effect(() => {
+		index;
+		handleChange();
+	});
 </script>
 
 <div class="vid-container">
 	<div class="video">
-		{#key index}
-			<iframe
-				bind:this={streamPlayer}
-				title={pageData?.content?.streams[index].title}
-				src={pageData?.content?.streams[index].src}
-				style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
-				allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-				allowfullscreen
-			></iframe>
-		{/key}
+		<iframe
+			bind:this={streamPlayer}
+			title={pageData?.content?.streams[index].title}
+			src={pageData?.content?.streams[index].src}
+			allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+			allowfullscreen
+			class:change-out={change}
+			class:change-in={!change}
+		></iframe>
 	</div>
 </div>
 
-<div class="title-block">
+<div class="title-block" class:change-button={change}>
 	<h3>JD Farag Live Stream Schedule</h3>
 	<MainButton
 		onclick={checkAlternateSources}
@@ -67,6 +79,41 @@
 		font-family:
 			Tenor Sans,
 			sans-serif;
+	}
+
+	iframe {
+		border: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		transform: translateY(5px);
+	}
+
+	.change-out {
+		opacity: 0;
+		transition: all 0.15s ease-out;
+
+		@starting-style {
+			opacity: 1;
+		}
+	}
+
+	.change-in {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 1s 0.5s ease-in,
+			transform 0.5s 0.5s ease-in;
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+	.change-button {
+		pointer-events: none;
 	}
 
 	@media (min-width: 1000px) {

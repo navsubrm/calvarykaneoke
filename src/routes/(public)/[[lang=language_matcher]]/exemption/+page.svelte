@@ -98,10 +98,10 @@
 		width: 100%;
 	}
 
-	.general-content {
+	/* .general-content {
 		margin-top: 1em;
 		padding-bottom: 2em;
-	}
+	} */
 
 	@media (min-width: 600px) {
 		section {

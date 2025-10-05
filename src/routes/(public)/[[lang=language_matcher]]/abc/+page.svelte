@@ -31,8 +31,6 @@
 	});
 
 	onDestroy(() => editor?.close());
-
-	$inspect('Page data from Abcs: ', pageData);
 </script>
 
 <svelte:head>
@@ -74,7 +72,7 @@
 	</div>
 {/snippet}
 
-<style type="text/css">
+<style>
 	section {
 		position: relative;
 		--_footer-padding: 2.5em;

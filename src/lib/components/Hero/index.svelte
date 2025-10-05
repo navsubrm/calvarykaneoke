@@ -1,6 +1,6 @@
 <script lang="ts">
 	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
-	import ChevronAnimation from './utils/ChevronAnimation.svelte';
+	import ChevronAnimation from '$lib/icons/ChevronAnimation/ChevronAnimation.svelte';
 	import Hero from './utils/model';
 
 	let { data } = $props();

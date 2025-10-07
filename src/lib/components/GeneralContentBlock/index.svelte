@@ -2,7 +2,7 @@
 	import type { Props } from './utils/props.types';
 	import isJson from '$lib/config/helperFunctions/isJson';
 
-	let { data, classes }: Props = $props();
+	let { data, classes = '' }: Props = $props();
 </script>
 
 {#if isJson(data)}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import MailingListForm from './utils/MailingListForm.svelte';
+	import SocialFollow from '$lib/components/SocialFollow/Index.svelte';
 	import Footer from './utils/model';
 
 	const links = $state(page?.data?.links);
@@ -31,16 +32,7 @@
 			{/each}
 		</div>
 
-		<div class="flex social-links">
-			{#each links as { label, href, alt, imgUrl, location }}
-				{#if location == 'footer-social'}
-					<a class="social-link-img" {href} target="_blank">
-						<img src={imgUrl} {alt} />
-						<small class="social-link-label">{label}</small>
-					</a>
-				{/if}
-			{/each}
-		</div>
+		<SocialFollow data={{ padding_top: 2.5, icon: { brightness: 2.9, grey_scale: 1, size: 15 } }} />
 	</div>
 
 	<small class="copyright">© Copyright {new Date().getFullYear()} J.D. Farag</small>
@@ -77,8 +69,7 @@
 		padding: 1em;
 	}
 
-	.nav-links,
-	.social-links {
+	.nav-links {
 		position: relative;
 		flex-wrap: wrap;
 		gap: 25px;
@@ -88,27 +79,6 @@
 	.nav-links :global(a:hover) {
 		color: var(--floral-white);
 		transition: all 0.5s ease-in-out;
-	}
-
-	.social-link-img {
-		filter: brightness(2.9) grayscale(1);
-		opacity: 0.6;
-		scale: 1;
-		transition: all 0.25s ease-in-out;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.social-link-img img {
-		height: 20px;
-		width: 20px;
-	}
-
-	.social-link-img:hover {
-		opacity: 1;
-		scale: 1.05;
 	}
 
 	h2 {
@@ -142,22 +112,5 @@
 		font-size: 9px;
 		position: absolute;
 		inset: auto auto 6% 3%;
-	}
-
-	.social-link-label {
-		display: none;
-		position: absolute;
-		bottom: -15px;
-		color: #545454;
-		font-size: 9px;
-		letter-spacing: -0.25px;
-		width: max-content;
-		opacity: 0;
-		transition: all 0.5s ease-in-out allow-discrete;
-	}
-
-	.social-link-img:hover > .social-link-label {
-		display: block;
-		opacity: 1;
 	}
 </style>

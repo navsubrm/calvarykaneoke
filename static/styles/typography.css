@@ -31,7 +31,7 @@ h5 {
 }
 
 p {
-	font-size: clamp(17px, 1.1em, 20px);
+	font-size: clamp(15px, 1.05em, 19px);
 	font-family: 'Open Sans', sans-serif;
 }
 

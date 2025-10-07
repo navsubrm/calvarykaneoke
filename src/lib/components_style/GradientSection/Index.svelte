@@ -3,8 +3,10 @@
 
 	type color = { [key: string]: { value: string } | string };
 
-	let { Children, data }: { Children: Snippet; data: { lower: color; upper: color; base: color } } =
-		$props();
+	let {
+		Children,
+		data = $bindable()
+	}: { Children: Snippet; data: { lower: color; upper: color; base: color } } = $props();
 </script>
 
 <section
@@ -27,7 +29,7 @@
 		min-height: fit-content;
 		height: var(--_component-height, 90vh);
 		background:
-			linear-gradient(172deg, var(--_gradient-upper) 36%, var(--_gradient-lower)),
+			linear-gradient(172deg, var(--_gradient-upper) 42%, var(--_gradient-lower)),
 			var(--_background-base);
 	}
 

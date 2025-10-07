@@ -51,7 +51,7 @@
 		/>
 
 		<div class="main-button">
-			<MainButton href={'/'} label={pageData?.content?.button?.label} />
+			<MainButton href={pageData?.content?.button?.href} label={pageData?.content?.button?.label} />
 		</div>
 
 		<GeneralContentBlock

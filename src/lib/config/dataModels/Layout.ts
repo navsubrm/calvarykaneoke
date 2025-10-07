@@ -50,15 +50,15 @@ export default {
 			href: '/',
 			alt: 'Facebook',
 			imgUrl: '/images/1Asset-19FB.svg',
-			location: 'footer-social',
+			location: 'social',
 			type: 'link'
 		},
 		{
 			label: 'X (Twitter)',
 			href: '/',
 			alt: 'X (Twitter)',
-			imgUrl: '/images/1Asset-20TW.svg',
-			location: 'footer-social',
+			imgUrl: '/images/1Asset-23X.svg',
+			location: 'social',
 			type: 'link'
 		},
 		{
@@ -66,7 +66,7 @@ export default {
 			href: '/',
 			alt: 'You Tube',
 			imgUrl: '/images/1Asset-21YT.svg',
-			location: 'footer-social',
+			location: 'social',
 			type: 'link'
 		},
 		{
@@ -74,7 +74,7 @@ export default {
 			href: '/',
 			alt: 'Instagram',
 			imgUrl: '/images/1Asset-22IS.svg',
-			location: 'footer-social',
+			location: 'social',
 			type: 'link'
 		},
 		{
@@ -145,7 +145,7 @@ export default {
 			subMenu: [
 				{
 					label: 'Service Times',
-					href: '/service-times',
+					href: 'https://support.jdfarag.org/hc/en-us/articles/44120768115091-Service-Time-and-Location-Information',
 					alt: 'Service Times',
 					imgUrl: '',
 					location: '',
@@ -153,21 +153,11 @@ export default {
 				},
 				{
 					label: 'Social',
-					href: '',
+					href: '/social',
 					alt: 'Social',
 					imgUrl: '',
 					location: '',
-					type: 'menu',
-					subMenu: [
-						{
-							label: 'Instagram',
-							href: '/',
-							alt: 'Instagram',
-							imgUrl: '/images/1Asset-22IS.svg',
-							location: 'footer-social',
-							type: 'link'
-						}
-					]
+					type: 'link'
 				},
 				{
 					label: 'Podcasts',
@@ -187,7 +177,7 @@ export default {
 				},
 				{
 					label: 'Support',
-					href: '/support',
+					href: 'https://support.jdfarag.org/hc/en-us',
 					alt: 'Support',
 					imgUrl: '',
 					location: '',
@@ -195,7 +185,7 @@ export default {
 				},
 				{
 					label: 'Apps',
-					href: '/apps',
+					href: 'https://subsplash.com/calvarychapelkaneohe/app',
 					alt: 'Apps',
 					imgUrl: '',
 					location: '',

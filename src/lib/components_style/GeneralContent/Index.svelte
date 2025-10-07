@@ -16,7 +16,7 @@
 	@media (min-width: 600px) {
 		div {
 			width: 90%;
-			max-width: 1280px;
+			max-width: 1180px;
 		}
 	}
 </style>

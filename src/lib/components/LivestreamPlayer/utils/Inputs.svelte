@@ -28,7 +28,7 @@
 
 	{#each { length: streamCount }, i}
 		<fieldset>
-			<legend>Steam {i + 1}</legend>
+			<legend>Stream {i + 1}</legend>
 			<div>
 				<div class="editor">
 					<General

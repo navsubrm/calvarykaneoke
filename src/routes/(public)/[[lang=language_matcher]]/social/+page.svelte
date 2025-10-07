@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
-	import SocialFooter from '$lib/components/SocialFooter/index.svelte';
 	import { componentDataConverter } from '$lib/config/helperFunctions/componentDataConverter';
-	import blank from '$lib/config/dataModels/Social';
+	import blank from '$lib/config/dataModels/About';
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
-	import AboutMain from '$lib/components/AboutMain/index.svelte';
-	import AboutImage from '$lib/components/AboutImage/index.svelte';
+	import SocialLargeFollow from '$lib/components/SocialLargeFollow/index.svelte';
 	import AboutChurch from '$lib/components/AboutChurch/index.svelte';
 	import GradientSection from '$lib/components_style/GradientSection/Index.svelte';
 	import GeneralContent from '$lib/components_style/GeneralContent/Index.svelte';
@@ -35,8 +33,6 @@
 	});
 
 	onDestroy(() => editor?.close());
-
-	$inspect('Page data from Social: ', pageData);
 </script>
 
 <svelte:head>
@@ -44,13 +40,14 @@
 </svelte:head>
 
 <EditorNotice bind:editor />
-<AboutMain bind:pageData />
 <GradientSection Children={contentStyling} bind:data={pageData.content.background} />
 
 {#snippet contentStyling()}
 	<GeneralContent Children={content} />
 	{#snippet content()}
-		<AboutImage bind:pageData />
+		<GeneralContentBlock data={pageData?.content?.upper_content} />
+
+		<SocialLargeFollow data={pageData?.content?.social_large_follow} />
 
 		<div class="div-block"></div>
 
@@ -59,8 +56,6 @@
 		<div class="div-block"></div>
 
 		<GeneralContentBlock data={pageData?.content?.lower_content} />
-
-		<SocialFooter bind:pageData />
 	{/snippet}
 {/snippet}
 

@@ -1,5 +1,6 @@
 import MetaData from '$lib/components/MetaData/utils/model';
 import SocialFollowLarge from '$lib/components/SocialLargeFollow/utils/model';
+import AboutChurch from '$lib/components/AboutChurch/utils/model';
 
 export default {
 	name: 'social',
@@ -13,6 +14,7 @@ export default {
 			base: '#d2cbbb',
 			lower: '#271254cc'
 		},
+		about_church: { ...AboutChurch },
 		content: {
 			upper: '',
 			lower: ''

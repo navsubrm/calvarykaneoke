@@ -182,7 +182,7 @@
 
 				<AboutImageInputs bind:pageData />
 
-				<SocialFollowInputs bind:pageData />
+				<!-- <SocialFollowInputs bind:pageData /> -->
 			</details>
 
 			<details>

@@ -45,7 +45,9 @@
 {#snippet contentStyling()}
 	<GeneralContent Children={content} />
 	{#snippet content()}
-		<GeneralContentBlock data={pageData?.content?.upper_content} />
+		<div class="content-margin">
+			<GeneralContentBlock data={pageData?.content?.content?.upper} />
+		</div>
 
 		<SocialLargeFollow data={pageData?.content?.social_large_follow} />
 
@@ -54,8 +56,9 @@
 		<AboutChurch bind:pageData />
 
 		<div class="div-block"></div>
-
-		<GeneralContentBlock data={pageData?.content?.lower_content} />
+		<div class="content-margin">
+			<GeneralContentBlock data={pageData?.content?.content?.lower} />
+		</div>
 	{/snippet}
 {/snippet}
 
@@ -65,5 +68,9 @@
 		height: 20px;
 		margin-top: 10px;
 		margin-bottom: 20px;
+	}
+
+	.content-margin {
+		margin-block: 40px;
 	}
 </style>

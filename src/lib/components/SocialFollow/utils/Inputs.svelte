@@ -2,6 +2,8 @@
 	import General from '$lib/userInputs/general/General.svelte';
 
 	let { pageData = $bindable() } = $props();
+
+	$inspect('Page data from social follow inputs: ', pageData);
 </script>
 
 <fieldset>

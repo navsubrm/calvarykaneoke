@@ -4,25 +4,25 @@
 
 	let { pageData = $bindable() } = $props();
 
-	let streamCount = $state(pageData?.content?.social_follow_large.social_links?.length || 1);
+	let linkCount = $state(pageData?.content?.social_follow_large?.social_links?.length || 1);
 
-	function addStream(e: MouseEvent) {
+	function addLink(e: MouseEvent) {
 		e.preventDefault();
 		pageData.content.social_follow_large.social_links = [
 			...pageData?.content?.social_follow_large.social_links,
 			{ title: '', src: '' }
 		];
-		streamCount = pageData.content.social_follow_large.social_links.length;
+		linkCount = pageData.content.social_follow_large.social_links.length;
 	}
 
-	function deleteStream(e: MouseEvent, i: number) {
+	function deleteLink(e: MouseEvent, i: number) {
 		e.preventDefault();
 		pageData.content.social_follow_large.social_links = [
 			...pageData.content.social_follow_large.social_links.filter(
 				(_: unknown, index: number) => i !== index
 			)
 		];
-		streamCount = pageData.content.social_follow_large.social_links.length;
+		linkCount = pageData.content.social_follow_large.social_links.length;
 	}
 </script>
 
@@ -37,7 +37,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow.icon.size}
+			bind:value={pageData.content.social_follow_large.main.size}
 		/>
 	</div>
 
@@ -49,7 +49,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow.icon.brightness}
+			bind:value={pageData.content.social_follow_large.main.brightness}
 		/>
 	</div>
 
@@ -61,7 +61,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow.icon.grey_scale}
+			bind:value={pageData.content.social_follow_large.main.grey_scale}
 		/>
 	</div>
 </fieldset>
@@ -69,37 +69,59 @@
 <fieldset>
 	<legend>Link List</legend>
 
-	<MainButton label="Add New Link" onclick={addStream} />
-	<input type="hidden" name="stream_count" bind:value={streamCount} />
+	<MainButton label="Add New Link" onclick={addLink} />
+	<input type="hidden" name="link_count" bind:value={linkCount} />
 
-	{#each { length: streamCount }, i}
+	{#each { length: linkCount }, i}
 		<fieldset>
-			<legend>Stream {i + 1}</legend>
+			<legend>Social Link {i + 1}</legend>
 			<div>
 				<div class="editor">
 					<General
-						name="streams_title_{i}"
+						name="social_follow_large_social_links_label_{i}"
 						label="Stream Title"
 						placeholder="Enter the title of this stream."
 						type={'text'}
 						required={true}
 						themeBase={'One'}
-						value={pageData?.content?.streams[i]?.title}
+						value={pageData?.content?.social_follow_large?.social_links[i]?.label}
 					/>
 				</div>
 				<div class="editor">
 					<General
-						name="streams_src_{i}"
+						name="social_follow_large_social_links_href_{i}"
+						label="Stream Title"
+						placeholder="Enter the title of this stream."
+						type={'text'}
+						required={true}
+						themeBase={'One'}
+						value={pageData?.content?.social_follow_large?.social_links[i]?.href}
+					/>
+				</div>
+				<div class="editor">
+					<General
+						name="social_follow_large_social_links_alt_{i}"
 						label="Stream Source Url"
 						placeholder="Enter the url for the stream."
 						type={'text'}
 						required={true}
 						themeBase={'One'}
-						value={pageData?.content?.streams[i]?.src}
+						value={pageData?.content?.social_follow_large?.social_links[i]?.alt}
+					/>
+				</div>
+				<div class="editor">
+					<General
+						name="social_follow_large_social_links_imgUrl_{i}"
+						label="Stream Source Url"
+						placeholder="Enter the url for the stream."
+						type={'text'}
+						required={true}
+						themeBase={'One'}
+						value={pageData?.content?.social_follow_large?.social_links[i]?.imgUrl}
 					/>
 				</div>
 			</div>
-			<MainButton label="Delete Link" onclick={(e) => deleteStream(e, i)} />
+			<MainButton label="Delete Link" onclick={(e) => deleteLink(e, i)} />
 		</fieldset>
 	{/each}
 </fieldset>

@@ -44,7 +44,8 @@
 						<a
 							href={link.href}
 							title={link.alt}
-							class:current={page?.url.pathname.includes(link.href)}>{link.label}</a
+							class:current={page?.url.pathname.includes(link.href)}
+							class:admin={link.href.includes('/admin/')}>{link.label}</a
 						>
 					</li>
 				{:else if link.location == 'header' && link.type == 'menu'}
@@ -62,7 +63,9 @@
 			{#each links as link}
 				{#if link.location == 'header' && link.type == 'link'}
 					<li class="hoverable">
-						<a href={link.href} title={link.alt}>{link.label}</a>
+						<a href={link.href} title={link.alt} class:admin={link.href.includes('/admin/')}
+							>{link.label}</a
+						>
 					</li>
 				{:else if link.location == 'header' && link.type == 'menu'}
 					<SubMenu menu={link} />
@@ -182,5 +185,9 @@
 			top: 15px;
 			right: 15px;
 		}
+	}
+
+	.admin {
+		color: var(--indian-red) !important;
 	}
 </style>

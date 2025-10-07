@@ -11,11 +11,8 @@
 	import FormButton from '$lib/userInputs/button/FormButton.svelte';
 	import languageSelectOptions from '$lib/config/optionArrays/languageSelectOptions';
 	import colorSelectOptions from '$lib/config/optionArrays/colorSelectOptions';
-	import AboutMainInputs from '$lib/components/AboutMain/utils/Inputs.svelte';
-	import AboutImageInputs from '$lib/components/AboutImage/utils/Inputs.svelte';
-	import SocialFollowInputs from '$lib/components/SocialFollow/utils/Inputs.svelte';
 	import AboutChurchInputs from '$lib/components/AboutChurch/utils/Inputs.svelte';
-	import SocialFooterInputs from '$lib/components/SocialFooter/utils/Inputs.svelte';
+	import SocialLargeFollowInputs from '$lib/components/SocialLargeFollow/utils/Inputs.svelte';
 	import QuillInput from '$lib/userInputs/quillInput/QuillInput.svelte';
 	import MetaDataInputs from '$lib/components/MetaData/utils/Inputs.svelte';
 
@@ -23,6 +20,7 @@
 	 * !! Update with each page.
 	 * */
 	import blank from '$lib/config/dataModels/Social';
+
 	const pageId: string = $state('social');
 	const pageRoute: string = $state('/social');
 
@@ -173,35 +171,44 @@
 			</details>
 
 			<details>
-				<summary>Upper Content</summary>
-				<div class="editor">
-					<QuillInput
-						name="upper_content"
-						label="Provide Upper Content"
-						placeholder="Enter the content you want displayed above the social links."
-						themeBase={'One'}
-						bind:value={pageData.content.upper_content}
-					/>
-				</div>
+				<summary>Content</summary>
+
+				<fieldset>
+					<legend>Upper Content</legend>
+					<div class="editor">
+						<QuillInput
+							name="content_upper"
+							label="Provide Upper Content"
+							placeholder="Enter the content you want displayed above the social links."
+							themeBase={'One'}
+							bind:value={pageData.content.content.upper}
+						/>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>Lower Content</legend>
+
+					<div class="editor">
+						<QuillInput
+							name="content_lower"
+							label="Provide Lower Content"
+							placeholder="Enter the content you want displayed below the social links."
+							themeBase={'One'}
+							bind:value={pageData.content.content.lower}
+						/>
+					</div>
+				</fieldset>
 			</details>
 
 			<details>
 				<summary>About Calvary Kaneohe</summary>
-
 				<AboutChurchInputs bind:pageData />
 			</details>
 
 			<details>
-				<summary>Lower Content</summary>
-				<div class="editor">
-					<QuillInput
-						name="lower_content"
-						label="Provide Lower Content"
-						placeholder="Enter the content you want displayed below the social links."
-						themeBase={'One'}
-						bind:value={pageData.content.lower_content}
-					/>
-				</div>
+				<summary>Social Media Link Data</summary>
+				<SocialLargeFollowInputs bind:pageData />
 			</details>
 
 			<MetaDataInputs bind:pageData />

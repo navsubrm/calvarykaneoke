@@ -36,7 +36,9 @@
 			{#each menu.subMenu as link}
 				{#if link.type == 'link'}
 					<li class="hoverable">
-						<a href={link.href} title={link.alt}>{link.label}</a>
+						<a href={link.href} title={link.alt} class:admin={link.href.includes('/admin/')}
+							>{link.label}</a
+						>
 					</li>
 				{:else if link.type == 'menu'}
 					<SubMenu menu={link} narrow={true} />
@@ -152,5 +154,9 @@
 
 	li:hover :global(> *) {
 		color: var(--burlywood);
+	}
+
+	.admin {
+		color: var(--indian-red) !important;
 	}
 </style>

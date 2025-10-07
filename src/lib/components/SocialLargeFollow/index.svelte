@@ -10,13 +10,11 @@
 		?.grey_scale}; --_icon-size: {data?.main?.size}px;"
 >
 	<div class="flex social-links">
-		{#each data?.social_links as { label, href, alt, imgUrl, location }}
-			{#if location == 'social'}
-				<a class="social-link-img" {href} target="_blank">
-					<img src={imgUrl} {alt} />
-					<small class="social-link-label">{label}</small>
-				</a>
-			{/if}
+		{#each data?.social_links as { label, href, alt, imgUrl }}
+			<a class="social-link-img" {href} target="_blank">
+				<img src={imgUrl} {alt} />
+				<small class="social-link-label">{label}</small>
+			</a>
 		{/each}
 	</div>
 </div>

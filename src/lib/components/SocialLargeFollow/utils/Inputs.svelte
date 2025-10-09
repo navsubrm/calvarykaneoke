@@ -79,8 +79,8 @@
 				<div class="editor">
 					<General
 						name="social_follow_large_social_links_label_{i}"
-						label="Stream Title"
-						placeholder="Enter the title of this stream."
+						label="Link Title"
+						placeholder="Enter the title."
 						type={'text'}
 						required={true}
 						themeBase={'One'}
@@ -90,8 +90,8 @@
 				<div class="editor">
 					<General
 						name="social_follow_large_social_links_href_{i}"
-						label="Stream Title"
-						placeholder="Enter the title of this stream."
+						label="Link HREF"
+						placeholder="Enter the HREF."
 						type={'text'}
 						required={true}
 						themeBase={'One'}
@@ -101,8 +101,8 @@
 				<div class="editor">
 					<General
 						name="social_follow_large_social_links_alt_{i}"
-						label="Stream Source Url"
-						placeholder="Enter the url for the stream."
+						label="Alt Text for Screen Readers"
+						placeholder="Enter alt text."
 						type={'text'}
 						required={true}
 						themeBase={'One'}
@@ -112,8 +112,8 @@
 				<div class="editor">
 					<General
 						name="social_follow_large_social_links_imgUrl_{i}"
-						label="Stream Source Url"
-						placeholder="Enter the url for the stream."
+						label="Image Link"
+						placeholder="Enter the url for the image."
 						type={'text'}
 						required={true}
 						themeBase={'One'}

@@ -31,7 +31,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		height: var(--_component-height);
-		min-height: 15vh;
+		min-height: fit-content;
 		background:
 			linear-gradient(
 				to bottom,

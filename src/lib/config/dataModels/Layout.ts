@@ -111,7 +111,7 @@ export default {
 				},
 				{
 					label: 'Bible Sermons',
-					href: '/bible-sermons',
+					href: '/sermons',
 					alt: 'Bible Sermons',
 					imgUrl: '',
 					location: '',

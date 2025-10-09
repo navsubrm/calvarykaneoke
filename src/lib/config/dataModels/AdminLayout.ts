@@ -2,7 +2,7 @@ import Footer from '$lib/components/Footer/utils/model';
 import Header from '$lib/components/Header/utils/model';
 
 export default {
-	header: { ...Header },
+	header: { ...Header, logo_link_href: '/admin' },
 	footer: { ...Footer },
 	links: [
 		{
@@ -137,7 +137,7 @@ export default {
 				},
 				{
 					label: 'Translations',
-					href: '/translations',
+					href: '/admin/translations',
 					alt: 'Translations',
 					imgUrl: '',
 					location: '',

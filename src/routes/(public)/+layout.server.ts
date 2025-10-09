@@ -2,14 +2,14 @@ import Layout from '$lib/config/dataModels/Layout';
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
-// Import your language matcher to use its list of supported languages
+//Import your language matcher to use its list of supported languages
 import { match } from '$params/language_matcher';
 
 export const load: LayoutServerLoad = async ({ platform, params, cookies, request, url }) => {
 	if (url.searchParams.get('mode') == 'edit')
 		return { links: Layout.links, header: Layout.header, footer: Layout.footer };
 
-	// If the language param is missing
+	//If the language param is missing
 	if (!params.lang) {
 		let languagePreference: string;
 
@@ -47,7 +47,7 @@ export const load: LayoutServerLoad = async ({ platform, params, cookies, reques
 		redirect(307, newPath);
 	}
 
-	// If a language param exists, set the cookie and continue
+	//If a language param exists, set the cookie and continue
 	cookies.set('language-preference', params.lang, {
 		path: '/',
 		httpOnly: true,

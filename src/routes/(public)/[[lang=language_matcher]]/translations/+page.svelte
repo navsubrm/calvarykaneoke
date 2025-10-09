@@ -2,14 +2,14 @@
 	import { page } from '$app/state';
 	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
 	import { componentDataConverter } from '$lib/config/helperFunctions/componentDataConverter';
-	import blank from '$lib/config/dataModels/Social';
+	import blank from '$lib/config/dataModels/Translations';
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
 	import SocialLargeFollow from '$lib/components/SocialLargeFollow/index.svelte';
-	import AboutChurch from '$lib/components/AboutChurch/index.svelte';
 	import GradientSection from '$lib/components_style/GradientSection/Index.svelte';
 	import GeneralContent from '$lib/components_style/GeneralContent/Index.svelte';
+	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -49,11 +49,11 @@
 			<GeneralContentBlock data={pageData?.content?.content?.upper} />
 		</div>
 
-		<SocialLargeFollow data={pageData?.content?.social_large_follow} />
+		<SocialLargeFollow data={pageData?.content?.social_follow_large} />
 
-		<div class="div-block"></div>
-
-		<AboutChurch bind:pageData />
+		<div class="main-button">
+			<MainButton href={pageData?.content?.button?.href} label={pageData?.content?.button?.label} />
+		</div>
 
 		<div class="div-block"></div>
 		<div class="content-margin">
@@ -72,5 +72,12 @@
 
 	.content-margin {
 		margin-block: 40px;
+	}
+
+	.main-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-block: 10vh;
 	}
 </style>

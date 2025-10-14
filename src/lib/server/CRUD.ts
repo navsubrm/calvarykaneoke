@@ -2,7 +2,11 @@ const tableName = 'pages';
 type Content = App.Components;
 
 export async function update(platform: App.Platform | undefined, content: App.Pages) {
-	const item: Content | undefined = await queryNewestRecordByPage(platform, content.name);
+	const item: Content | undefined = await queryNewestRecordByPage(
+		platform,
+		content.name,
+		content.language
+	);
 
 	const created_at = item?.created_at || new Date().toISOString();
 	const updated_at = new Date().toISOString();
@@ -38,7 +42,7 @@ export async function update(platform: App.Platform | undefined, content: App.Pa
 			)
 			.run();
 
-		console.log('Result from post: ', result);
+		//console.log('Result from post: ', result);
 
 		return result;
 	} catch (err) {
@@ -59,10 +63,25 @@ export async function queryByLimit(platform: App.Platform | undefined, limit: nu
 	return await platform?.env?.DB?.prepare(`SELECT * FROM ${tableName} LIMIT ${limit}`).run();
 }
 
-export async function queryNewestRecordByPage(platform: App.Platform | undefined, name: string) {
+export async function queryNewestRecordByPage(
+	platform: App.Platform | undefined,
+	name: string,
+	language: string = 'en'
+) {
 	const newest = await platform?.env?.DB.prepare(
-		`SELECT * FROM ${tableName} WHERE name = "${name}" ORDER BY updated_at DESC LIMIT 1`
+		`
+		SELECT * 
+		FROM ${tableName} 
+		WHERE 
+			name = "${name}" 
+			AND 
+			language = "${language}"
+		ORDER BY updated_at DESC 
+		LIMIT 1`
 	).run();
+
+	if (newest?.success && newest?.results?.length == 0 && language !== 'en')
+		return queryNewestRecordByPage(platform, name, 'en');
 
 	if (!newest || !newest.success || newest?.results.length == 0) return undefined;
 

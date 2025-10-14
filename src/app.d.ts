@@ -46,6 +46,41 @@ declare global {
 			caches: CacheStorage & { default: Cache };
 		}
 	}
+
+	// Google Translate import declaration (see layout)
+	declare namespace google {
+		namespace translate {
+			/**
+			 * Options for the Google Translate element.
+			 */
+			interface TranslateElementOptions {
+				pageLanguage?: string;
+				includedLanguages?: string;
+				layout?: number;
+				autoDisplay?: boolean;
+			}
+
+			/**
+			 * Represents the Google Translate element.
+			 * @param options Configuration options for the element.
+			 * @param elementId The ID of the DOM element where the translator should be rendered.
+			 */
+			class TranslateElement {
+				constructor(options: TranslateElementOptions, elementId: string);
+			}
+
+			/**
+			 * Layout options for the Google Translate element.
+			 */
+			enum TranslateElement {
+				InlineLayout,
+				FloatPosition
+			}
+		}
+	}
+
+	// The callback function defined in the script's `cb` parameter is also a global variable.
+	declare function googleTranslateElementInit(): void;
 }
 
 export {};

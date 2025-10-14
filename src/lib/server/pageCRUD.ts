@@ -5,20 +5,25 @@ export async function update(platform: App.Platform | undefined, content: App.Pa
 	 * ! I feel like I need to think harder on this and check for duplicates in some way.
 	 */
 
-	const item: App.Page | undefined = await queryNewestRecordByPage(platform, content.route);
+	const item: App.Page | undefined = await queryNewestRecordByPage(
+		platform,
+		content.route,
+		content.language
+	);
 
 	const created_at = item?.created_at || new Date().toISOString();
 	const updated_at = new Date().toISOString();
 	const version = (item?.version as number) + 1 || 1;
 
 	const result = await platform?.env.DB.prepare(
-		`INSERT INTO ${tableName} (_id, name, route, page_content, meta_data, created_at, updated_at, version) VALUES (?1,?2,?3,?4,?5,?6,?7,?8)`
+		`INSERT INTO ${tableName} (_id, name, route, language, content, meta_data, created_at, updated_at, version) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9)`
 	)
 		.bind(
 			crypto.randomUUID(),
 			content.name,
 			content.route,
-			JSON.stringify(content.page_content),
+			content.language,
+			JSON.stringify(content.content),
 			JSON.stringify(content.meta_data),
 			created_at,
 			updated_at,
@@ -41,9 +46,13 @@ export async function queryByLimit(platform: App.Platform | undefined, limit: nu
 	return await platform?.env?.DB?.prepare(`SELECT * FROM ${tableName} LIMIT ${limit}`).run();
 }
 
-export async function queryNewestRecordByPage(platform: App.Platform | undefined, route: string) {
+export async function queryNewestRecordByPage(
+	platform: App.Platform | undefined,
+	route: string,
+	language: string = 'en-us'
+) {
 	const newest = await platform?.env?.DB.prepare(
-		`SELECT * FROM ${tableName} WHERE route = "${route}" ORDER BY updated_at DESC LIMIT 1`
+		`SELECT * FROM ${tableName} WHERE route = "${route}"  language = "${language}" ORDER BY updated_at DESC LIMIT 1`
 	).run();
 
 	if (!newest || !newest.success || newest?.results.length == 0) return undefined;

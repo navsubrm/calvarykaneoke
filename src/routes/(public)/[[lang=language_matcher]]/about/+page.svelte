@@ -35,8 +35,6 @@
 	});
 
 	onDestroy(() => editor?.close());
-
-	$inspect('Page data from Social: ', pageData);
 </script>
 
 <svelte:head>

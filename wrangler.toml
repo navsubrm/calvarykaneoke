@@ -8,6 +8,7 @@ observability = {
 
 [[vars]]
 IS_DEV = 'false'
+NODE_MAILER_USERNAME='support@calvarykaneohe.church'
 
 [[d1_databases]]
 binding = "DB"

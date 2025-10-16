@@ -67,7 +67,7 @@
 	input[type='submit']:hover,
 	input[type='submit']:focus,
 	input[type='submit']:focus-within {
-		color: var(--_text);
+		color: var(--_background, var(--_text));
 		background-color: color-mix(in lab, var(--_highlight), transparent 10%);
 		border: solid 1px var(--_text);
 	}

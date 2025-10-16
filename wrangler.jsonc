@@ -13,7 +13,8 @@
 		"directory": ".svelte-kit/cloudflare"
 	},
 	"vars": {
-		"IS_DEV": false
+		"IS_DEV": false,
+		"NODE_MAILER_USERNAME": "support@calvarykaneohe.church"
 	},
 	"observability": {
 		"enabled": true

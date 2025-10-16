@@ -98,20 +98,22 @@ export const form: themes = {
 	},
 	// Light blue
 	two: {
-		one: '--color-primary-dark-blue', //bg
-		two: '--color-light-neutral', //Text
-		three: '--color-accent-blue', //highlight
-		four: '--color-functional-green', //Success
-		five: '--color-highlight-orange', //Warn
-		six: '--color-alert-red' //Error
+		one: '--floral-white',
+		two: 'inherit',
+		three: '--floral-white',
+		four: '--dark-gold',
+		five: '--deep-purple',
+		six: '--passion',
+		seven: '--burlywood',
+		eight: '--indian-red'
 	},
 	three: {
-		one: '--color-light-neutral', //bg
-		two: '--color-primary-dark-blue', //Text
-		three: '--color-highlight-orange', //highlight
-		four: '--color-functional-green', //Success
-		five: '--color-highlight-orange', //Warn
-		six: '--color-alert-red' //Error
+		one: '--floral-white', //bg
+		two: '--dark-gold', //Text
+		three: '--dark-gold', //highlight
+		four: '--passion', //Success
+		five: '--burlywood', //Warn
+		six: '--indian-red' //Error
 	},
 	// Light blue
 	four: {

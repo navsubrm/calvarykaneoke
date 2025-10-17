@@ -2,8 +2,8 @@ import SocialFollow from '$lib/components/SocialFollow/utils/model';
 import MetaData from '$lib/components/MetaData/utils/model';
 
 export default {
-	name: 'contact',
-	route: '/contact',
+	name: 'frequently-requested-pdfs',
+	route: '/frequently-requested-pdfs',
 	type: 'Page',
 	language: 'en',
 	content: {
@@ -14,7 +14,7 @@ export default {
 			lower: '#271254cc'
 		},
 		social_follow: { ...SocialFollow },
-		aside_content: {
+		main_content: {
 			main: ''
 		}
 	},

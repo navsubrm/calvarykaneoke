@@ -1,7 +1,18 @@
 import { fail } from '@sveltejs/kit';
 import contactFormServerActions from '$lib/server/contactFormServerActions';
+import * as CRUD from '$lib/server/CRUD.js';
 
 const dev = true;
+
+export async function load({ platform, url }) {
+	const mode = url.searchParams.get('mode');
+	const id = url.searchParams.get('edit-id');
+
+	return {
+		editor: { mode, id },
+		page: await CRUD.queryNewestRecordByPage(platform, 'contact')
+	};
+}
 
 export const actions = {
 	contact: async ({ request }) => {
@@ -11,8 +22,8 @@ export const actions = {
 				nameMissing: true,
 				emailMissing: true,
 				messageMissing: true,
-				fail: true
-				//success: true,
+				//fail: true
+				success: true
 			};
 		}
 

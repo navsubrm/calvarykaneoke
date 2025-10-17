@@ -142,7 +142,7 @@
 						label={'SUBMIT'}
 						processingLabel={'Sending Message...'}
 						{processing}
-						failLabel={'Something Went Wrong, please try again.'}
+						failLabel={'Something Went Wrong.'}
 						{fail}
 						successLabel={'Message Sent!'}
 						{success}
@@ -155,21 +155,7 @@
 			</form>
 
 			<div class="aside-content">
-				<h5>JDFarag.org</h5>
-				<p>
-					Our Church is located in Kaneohe on the windward side of Oahu, but we’re also blessed to
-					have an amazing online church as well, where anyone globally can join us by watching
-					Pastor JD Farag's weekly video updates!
-				</p>
-				<h5>Calvary Kaneohe</h5>
-				<p>47-525 Kamehameha Hwy. Kaneohe, HI 96744​ +1 (808) 262-8800</p>
-				<h5>Support Center</h5>
-				<p>
-					Please visit our Support Center for announcements, including service related
-					announcements, frequently requested support information, including Audio/Video, Donation,
-					Exemption Letters, and more.
-				</p>
-				<!-- <GeneralContentBlock data={pageData?.content?.lower_content} /> -->
+				<GeneralContentBlock data={pageData?.content?.aside_content.main} />
 
 				<SocialFollow
 					data={{
@@ -221,20 +207,19 @@
 	.aside-content {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: flex-start;
-		padding-block: 3em;
-		gap: 10px;
+		padding-block: 1.5em;
 	}
 
-	h4 {
+	:global(h3, h4, h5) {
 		font-weight: bold;
+		font-size: 17px;
 	}
 
 	.aside-content :global(p) {
 		font-size: 15px;
 		font-weight: lighter;
-		margin-bottom: 10px;
 	}
 
 	.submit {

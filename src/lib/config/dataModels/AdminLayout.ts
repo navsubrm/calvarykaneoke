@@ -145,7 +145,7 @@ export default {
 				},
 				{
 					label: 'Frequently Requested PDFs',
-					href: '/frequently-requested-pdfs',
+					href: '/admin/frequently-requested-pdfs',
 					alt: 'Frequently Requested PDFs',
 					imgUrl: '',
 					location: '',

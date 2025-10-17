@@ -1,0 +1,19 @@
+In order to set up the Firebase ENV for SvelteKit 2.0:
+
+1. Run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+2. Add nvm prefix to dev.nix command array.
+
+3. Run: unset NPM_CONFIG_PREFIX
+
+4. run:  nvm install 24.10
+
+5. Run: nvm use 22.12
+
+6. Run: set NPM_CONFIG_PREFIX
+
+7. Run: npm i (to install node_modules)
+
+Note: Alt Node Install
+    1. npm install -g n
+        n 22.12 # or a newer version like 24

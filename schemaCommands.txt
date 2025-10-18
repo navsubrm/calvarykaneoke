@@ -24,4 +24,4 @@ Commands for updating Database construct:
 -- D1 migrations: npx wrangler d1 migrations apply calvary_content --remote
 
 
--- npx wrangler r2 object put podcasts/67-TOP-2025-10-16-GodsPurposeForHisChurchPart2.mp3 --file=./testR2Files/67-TOP-2025-10-16-GodsPurposeForHisChurchPart2.mp3 --local
+-- npx wrangler r2 object put podcasts/en/67-TOP-2025-10-16-GodsPurposeForHisChurchPart2.mp3 --file=./testR2Files/67-TOP-2025-10-16-GodsPurposeForHisChurchPart2.mp3 --local

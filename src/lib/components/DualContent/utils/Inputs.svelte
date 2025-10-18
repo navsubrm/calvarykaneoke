@@ -17,7 +17,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.dual_content.component_height}
+			value={pageData?.content?.dual_content?.component_height}
 		/>
 	</div>
 	<div class="editor">
@@ -28,7 +28,7 @@
 			themeBase={'One'}
 			required={true}
 			placeholder="Select a Background Color for the section."
-			bind:value={pageData.content.dual_content.background_color_upper}
+			value={pageData?.content?.dual_content?.background_color_upper}
 			items={colorSelectOptions}
 		/>
 	</div>
@@ -40,7 +40,7 @@
 			themeBase={'One'}
 			required={true}
 			placeholder="Select a Background Color for the section."
-			bind:value={pageData.content.dual_content.background_color_lower}
+			value={pageData?.content?.dual_content?.background_color_lower}
 			items={colorSelectOptions}
 		/>
 	</div>
@@ -52,7 +52,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.dual_content.background_image_url}
+			value={pageData?.content?.dual_content?.background_image_url}
 		/>
 	</div>
 </fieldset>
@@ -66,7 +66,7 @@
 			label="Wide Line Spacing Content"
 			placeholder="Enter the content you want in this component."
 			themeBase={'One'}
-			bind:value={pageData.content.dual_content.wide_content}
+			value={pageData?.content?.dual_content?.wide_content}
 		/>
 	</div>
 </fieldset>
@@ -80,7 +80,7 @@
 			label="Narrow Line Spacing Content"
 			placeholder="Enter the content you want in this component."
 			themeBase={'One'}
-			bind:value={pageData.content.dual_content.narrow_content}
+			value={pageData?.content?.dual_content?.narrow_content}
 		/>
 	</div>
 </fieldset>

@@ -63,6 +63,8 @@
 		e.preventDefault();
 		reset = !reset;
 	}
+
+	$inspect(pageData);
 </script>
 
 <svelte:head>

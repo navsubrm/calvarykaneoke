@@ -33,6 +33,8 @@
 	});
 
 	onDestroy(() => editor?.close());
+
+	$inspect('Page Data: ', pageData?.content?.social_large_follow);
 </script>
 
 <svelte:head>
@@ -49,7 +51,7 @@
 			<GeneralContentBlock data={pageData?.content?.content?.upper} />
 		</div>
 
-		<SocialLargeFollow data={pageData?.content?.social_large_follow} />
+		<SocialLargeFollow data={pageData?.content?.social_follow_large} />
 
 		<div class="div-block"></div>
 

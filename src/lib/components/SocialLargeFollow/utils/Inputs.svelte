@@ -37,7 +37,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow_large.main.size}
+			value={pageData?.content?.social_follow_large?.main?.size}
 		/>
 	</div>
 
@@ -49,7 +49,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow_large.main.brightness}
+			value={pageData?.content?.social_follow_large?.main?.brightness}
 		/>
 	</div>
 
@@ -61,7 +61,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.social_follow_large.main.grey_scale}
+			value={pageData?.content?.social_follow_large?.main?.grey_scale}
 		/>
 	</div>
 </fieldset>

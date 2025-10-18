@@ -15,7 +15,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.hero.background_image_url}
+			value={pageData?.content?.hero?.background_image_url}
 		/>
 	</div>
 </fieldset>
@@ -31,7 +31,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.hero.hero_icon_content}
+			value={pageData?.content?.hero?.hero_icon_content}
 		/>
 	</div>
 	<div class="input">
@@ -42,7 +42,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.hero.hero_title_content}
+			value={pageData?.content?.hero?.hero_title_content}
 		/>
 	</div>
 </fieldset>
@@ -55,7 +55,7 @@
 			label="Sub Title Left"
 			placeholder="Enter your Hero title content here."
 			themeBase={'One'}
-			bind:value={pageData.content.hero.sub_title_left}
+			value={pageData?.content?.hero?.sub_title_left}
 		/>
 	</div>
 	<div class="editor">
@@ -64,7 +64,7 @@
 			label="Sub Title Right"
 			placeholder="Enter your Hero title content here."
 			themeBase={'One'}
-			bind:value={pageData.content.hero.sub_title_right}
+			value={pageData?.content?.hero?.sub_title_right}
 		/>
 	</div>
 </fieldset>

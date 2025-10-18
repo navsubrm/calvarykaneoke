@@ -1,8 +1,9 @@
 <script lang="ts">
-	import model from './utils/model';
 	import type { Props } from './utils/props.types';
 
-	let { data = $bindable(model) }: Props = $props();
+	let { data = $bindable() }: Props = $props();
+
+	$inspect('Data from Large Social: ', data);
 </script>
 
 <div
@@ -10,12 +11,14 @@
 		?.grey_scale}; --_icon-size: {data?.main?.size}px;"
 >
 	<div class="flex social-links">
-		{#each data?.social_links as { label, href, alt, imgUrl }}
-			<a class="social-link-img" {href} target="_blank">
-				<img src={imgUrl} {alt} />
-				<small class="social-link-label">{label}</small>
-			</a>
-		{/each}
+		{#if data?.social_links}
+			{#each data?.social_links as { label, href, alt, imgUrl }}
+				<a class="social-link-img" {href} target="_blank">
+					<img src={imgUrl} {alt} />
+					<small class="social-link-label">{label}</small>
+				</a>
+			{/each}
+		{/if}
 	</div>
 </div>
 

@@ -7,6 +7,7 @@
 	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
 	import GradientSection from '$lib/components_style/GradientSection/Index.svelte';
 	import GeneralContent from '$lib/components_style/GeneralContent/Index.svelte';
+	import MainButton from '$lib/userInputs/MainButton/index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -30,8 +31,6 @@
 	});
 
 	onDestroy(() => editor?.close());
-
-	$inspect('R2 Object: ', page?.data?.r2Objects);
 </script>
 
 <svelte:head>
@@ -45,12 +44,22 @@
 	<GeneralContent Children={content} />
 	{#snippet content()}
 		<h3>Check out recent Podcasts</h3>
+
 		{#if page?.data?.r2Objects?.length > 0}
-			<ul>
-				{#each page?.data?.r2Objects as { key, url }}
-					<li><a href={url}>{key}</a></li>
-				{/each}
-			</ul>
+			<div class="player">
+				<div class="playlist">
+					{#each page?.data?.r2Objects as { language, title, date, audio }}
+						<div class="sub-text-container">
+							<div class="audio-header">
+								<h5>Title: {title}</h5>
+								<small>Language: {language.toUpperCase()} / Date Recorded: {date}</small>
+							</div>
+							<MainButton href={audio} label="Download" />
+						</div>
+						<audio controls src={audio} preload="none"></audio>
+					{/each}
+				</div>
+			</div>
 		{:else}
 			<p>Bucket is empty.</p>
 		{/if}
@@ -67,11 +76,28 @@
 		height: 100%;
 	}
 
-	ul {
-		margin-block: 1.5em;
+	audio {
+		width: 100%;
+		background: transparent;
 	}
 
-	li {
-		margin-left: 20px;
+	.player {
+		color: var(--floral-white);
+		background: linear-gradient(to bottom, var(--midnight-blue) 0% 10%, transparent);
+		border-radius: 8px;
+	}
+
+	.playlist {
+		padding: 1rem;
+	}
+
+	.sub-text-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	.audio-header {
+		margin-bottom: 20px;
 	}
 </style>

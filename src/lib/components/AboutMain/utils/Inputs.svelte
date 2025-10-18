@@ -14,7 +14,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.about_main.component_height}
+			value={pageData?.content?.about_main?.component_height}
 		/>
 	</div>
 
@@ -26,7 +26,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.about_main.src}
+			value={pageData?.content?.about_main?.src}
 		/>
 	</div>
 
@@ -38,7 +38,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			bind:value={pageData.content.about_main.content}
+			value={pageData?.content?.about_main?.content}
 		/>
 	</div>
 </fieldset>

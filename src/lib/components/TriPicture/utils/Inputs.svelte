@@ -20,7 +20,7 @@
 				themeBase={'One'}
 				multiple={false}
 				items={colorSelectOptions}
-				bind:value={pageData.content.tri_image.background_upper_color}
+				value={pageData?.content?.tri_image?.background_upper_color}
 			/>
 		</div>
 
@@ -33,7 +33,7 @@
 				themeBase={'One'}
 				multiple={false}
 				items={colorSelectOptions}
-				bind:value={pageData.content.tri_image.background_lower_color}
+				value={pageData?.content?.tri_image?.background_lower_color}
 			/>
 		</div>
 	</fieldset>
@@ -48,7 +48,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.primary_content.link.href}
+				value={pageData?.content?.tri_image?.primary_content?.link?.href}
 			/>
 		</div>
 		<div class="input">
@@ -59,7 +59,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.primary_content.link.label}
+				value={pageData?.content?.tri_image?.primary_content?.link?.label}
 			/>
 		</div>
 		<div class="input">
@@ -70,7 +70,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.primary_content.link.alt}
+				value={pageData?.content?.tri_image?.primary_content?.link?.alt}
 			/>
 		</div>
 		<div class="input">
@@ -81,7 +81,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.primary_content.image.src}
+				value={pageData?.content?.tri_image?.primary_content?.image?.src}
 			/>
 		</div>
 	</fieldset>
@@ -96,7 +96,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[0].image.src}
+				value={pageData?.content?.tri_image?.aside_content[0]?.image?.src}
 			/>
 		</div>
 		<div class="input">
@@ -107,7 +107,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[0].link.href}
+				value={pageData?.content?.tri_image?.aside_content[0]?.link?.href}
 			/>
 		</div>
 		<div class="input">
@@ -118,7 +118,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[0].link.href}
+				value={pageData?.content?.tri_image?.aside_content[0]?.link?.href}
 			/>
 		</div>
 		<div class="input">
@@ -129,7 +129,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[0].link.href}
+				value={pageData?.content?.tri_image?.aside_content[0]?.link?.href}
 			/>
 		</div>
 		<div class="editor">
@@ -138,7 +138,7 @@
 				label="Upper Content Box visible content"
 				placeholder="Enter the content you want to show in the upper content box."
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[0].content}
+				value={pageData?.content?.tri_image?.aside_content[0]?.content}
 			/>
 		</div>
 	</fieldset>
@@ -153,7 +153,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[1].image.src}
+				value={pageData?.content?.tri_image?.aside_content[1]?.image?.src}
 			/>
 		</div>
 		<div class="input">
@@ -164,7 +164,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[1].link.href}
+				value={pageData?.content?.tri_image?.aside_content[1]?.link?.href}
 			/>
 		</div>
 		<div class="input">
@@ -175,7 +175,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[1].link.href}
+				value={pageData?.content?.tri_image?.aside_content[1]?.link?.href}
 			/>
 		</div>
 		<div class="input">
@@ -186,7 +186,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[1].link.href}
+				value={pageData?.content?.tri_image?.aside_content[1]?.link?.href}
 			/>
 		</div>
 		<div class="editor">
@@ -195,7 +195,7 @@
 				label="Lower Content Box visible content"
 				placeholder="Enter the content you want to show in the lower content box."
 				themeBase={'One'}
-				bind:value={pageData.content.tri_image.aside_content[1].content}
+				value={pageData?.content?.tri_image?.aside_content[1]?.content}
 			/>
 		</div>
 	</fieldset>

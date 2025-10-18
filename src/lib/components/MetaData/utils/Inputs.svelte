@@ -16,7 +16,7 @@
 				type={'text'}
 				required={true}
 				themeBase={'One'}
-				bind:value={pageData.meta_data.title}
+				value={pageData?.meta_data?.title}
 			/>
 		</div>
 	</fieldset>

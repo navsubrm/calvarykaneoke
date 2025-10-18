@@ -3,6 +3,8 @@ import { R2_PUBLIC_BUCKET_URL } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
+const language = 'en';
+
 export const load: PageServerLoad = async ({ platform }) => {
 	if (!platform?.env.PODCASTS) {
 		throw error(500, 'R2 binding not found');
@@ -10,12 +12,22 @@ export const load: PageServerLoad = async ({ platform }) => {
 
 	try {
 		// Use the list() method on your R2 binding
-		const { objects } = await platform.env.PODCASTS.list();
+		const { objects } = await platform.env.PODCASTS.list({ prefix: `${language}/` });
 
-		const objectsWithUrls = objects.map((obj) => ({
-			key: obj.key,
-			url: `${R2_PUBLIC_BUCKET_URL}/${obj.key}`
-		}));
+		const objectsWithUrls = objects.map((obj) => {
+			const firstBreak = obj.key.split('/');
+			const secondBreak = firstBreak[1].split('-');
+
+			return {
+				language: firstBreak[0],
+				date: new Date(
+					`${secondBreak[2]}-${secondBreak[3]}-${secondBreak[4]}`
+				).toLocaleDateString(),
+				title: secondBreak[5].replace('.mp3', '').replace(/([a-z])([A-Z0-9])/g, '$1 $2'),
+				key: obj.key,
+				audio: `${R2_PUBLIC_BUCKET_URL}/${obj.key}`
+			};
+		});
 
 		return {
 			r2Objects: objectsWithUrls

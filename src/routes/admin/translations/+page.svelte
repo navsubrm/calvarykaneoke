@@ -124,6 +124,18 @@
 							bind:value={pageData.content.component_height}
 						/>
 					</div>
+
+					<div class="input">
+						<General
+							name="max_width"
+							label="Maximum Content Width"
+							placeholder="Enter the maximum width for content in pixels."
+							type={'number'}
+							required={true}
+							themeBase={'One'}
+							value={pageData?.content?.max_width}
+						/>
+					</div>
 				</fieldset>
 
 				<fieldset>

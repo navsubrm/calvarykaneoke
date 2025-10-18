@@ -45,21 +45,23 @@
 <GradientSection Children={contentStyling} bind:data={pageData.content.background} />
 
 {#snippet contentStyling()}
-	<GeneralContent Children={content} />
+	<GeneralContent Children={content} contentWidth={pageData?.content?.max_width} />
 	{#snippet content()}
-		<div class="content-margin">
-			<GeneralContentBlock data={pageData?.content?.content?.upper} />
+		<div class="content-margin narrow">
+			<GeneralContentBlock data={pageData?.content?.content?.upper} classes="content" />
 		</div>
 
 		<SocialLargeFollow data={pageData?.content?.social_follow_large} />
 
 		<div class="div-block"></div>
 
-		<AboutChurch bind:pageData />
+		<div class="narrow">
+			<AboutChurch bind:pageData />
+		</div>
 
 		<div class="div-block"></div>
-		<div class="content-margin">
-			<GeneralContentBlock data={pageData?.content?.content?.lower} />
+		<div class="content-margin narrow">
+			<GeneralContentBlock data={pageData?.content?.content?.lower} classes="content" />
 		</div>
 	{/snippet}
 {/snippet}
@@ -74,5 +76,9 @@
 
 	.content-margin {
 		margin-block: 40px;
+	}
+
+	.narrow {
+		margin-inline: 40px;
 	}
 </style>

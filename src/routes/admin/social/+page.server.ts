@@ -25,6 +25,7 @@ async function setContent({ platform, request }: RequestEvent) {
 		language: JSON.parse(formData.language.toString())?.value,
 		content: JSON.stringify({
 			component_height: Number(formData?.component_height),
+			max_width: Number(formData?.max_width),
 			background: {
 				upper: JSON.parse(formData?.background_upper.toString())?.value,
 				base: JSON.parse(formData?.background_base.toString())?.value,

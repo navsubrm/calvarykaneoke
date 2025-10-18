@@ -43,7 +43,7 @@
 <GradientSection Children={contentStyling} bind:data={pageData.content.background} />
 
 {#snippet contentStyling()}
-	<GeneralContent Children={content} />
+	<GeneralContent Children={content} contentWidth={pageData?.content?.max_width} />
 	{#snippet content()}
 		<div class="content-margin">
 			<GeneralContentBlock data={pageData?.content?.content?.upper} />

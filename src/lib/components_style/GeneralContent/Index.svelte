@@ -9,17 +9,15 @@
 </div>
 
 <style>
-	div,
 	.content-style-container {
 		width: 100%;
 		min-height: fit-content;
+		max-width: var(--_max-width, 1180px);
 	}
 
 	@media (min-width: 600px) {
-		div,
 		.content-style-container {
 			width: 90%;
-			max-width: var(--_max-width, 1180px);
 		}
 	}
 </style>

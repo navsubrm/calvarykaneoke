@@ -109,7 +109,7 @@
 							multiple={false}
 							items={languageSelectOptions}
 							themeBase={'One'}
-							bind:value={pageData.language}
+							value={pageData?.language}
 						/>
 					</div>
 				</fieldset>
@@ -117,26 +117,26 @@
 
 			<details>
 				<summary>Hero Content</summary>
-				<HeroInputs bind:pageData />
+				<HeroInputs {pageData} />
 			</details>
 
 			<details>
 				<summary>Current Sermon Content</summary>
-				<LargeImageInputs bind:pageData />
+				<LargeImageInputs {pageData} />
 			</details>
 
 			<details>
 				<summary>Dual Content</summary>
-				<DualContentInputs bind:pageData />
+				<DualContentInputs {pageData} />
 			</details>
 
 			<!-- JD About Inputs. -->
 			<details>
 				<summary>JD About Section</summary>
-				<TriPictureInputs bind:pageData />
+				<TriPictureInputs {pageData} />
 			</details>
 
-			<MetaDataInputs bind:pageData />
+			<MetaDataInputs {pageData} />
 
 			<Submit
 				{label}

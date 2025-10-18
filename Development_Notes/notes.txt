@@ -5,3 +5,9 @@ This will be important when handling downloadable assets:
 			).then((res) => res.arrayBuffer());
 
 You need to fetch asset from the ASSETS fetcher.  This can be typed by adding "ASSETS: Fetcher;" to the app.d.ts app/env section.
+
+
+18 October 2025: 
+
+	- I need to implement a way to set the language cookie.  
+	- I also need to read the cookie on load and if not English, use google translate to transate the page.

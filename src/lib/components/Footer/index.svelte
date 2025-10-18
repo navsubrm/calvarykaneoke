@@ -3,11 +3,43 @@
 	import MailingListForm from './utils/MailingListForm.svelte';
 	import SocialFollow from '$lib/components/SocialFollow/Index.svelte';
 	import Footer from './utils/model';
+	import { onMount } from 'svelte';
 
 	const links = $state(page?.data?.links);
 
 	let data = $state(page?.data?.footer || Footer);
+
+	onMount(() => {
+		let intervalCount = 0;
+		let interval = setInterval(() => {
+			if (window.google?.translate?.TranslateElement) {
+				console.log('Ran if');
+
+				googleTranslateElementInit();
+				clearInterval(interval);
+			} else {
+				intervalCount++;
+				if (intervalCount > 20) clearInterval(interval);
+			}
+		}, 500);
+	});
+
+	function googleTranslateElementInit() {
+		console.log('Ran Init');
+		new google.translate.TranslateElement(
+			{
+				pageLanguage: 'en',
+				//layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+				includedLanguages: 'en,es,nl,fr,de,ja,pt,ro'
+			},
+			'google_translate_element'
+		);
+	}
 </script>
+
+<svelte:head>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js"></script>
+</svelte:head>
 
 <footer
 	class="flex"
@@ -33,6 +65,7 @@
 		</div>
 
 		<SocialFollow data={{ padding_top: 2.5, icon: { brightness: 2.9, grey_scale: 1, size: 15 } }} />
+		<div id="google_translate_element"></div>
 	</div>
 
 	<small class="copyright">© Copyright {new Date().getFullYear()} J.D. Farag</small>
@@ -112,5 +145,21 @@
 		font-size: 9px;
 		position: absolute;
 		inset: auto auto 6% 3%;
+	}
+
+	:global(body > .skiptranslate) {
+		display: none;
+	}
+	:global(body > iframe.goog-te-banner-frame) {
+		display: none;
+	}
+
+	:global(.skiptranslate.goog-te-gadget),
+	:global(.skiptranslate.goog-te-gadget > div) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 2em;
 	}
 </style>

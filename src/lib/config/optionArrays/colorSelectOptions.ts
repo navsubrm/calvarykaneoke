@@ -1,4 +1,5 @@
 export default [
+	{ value: 'transparent', label: 'Transparent' },
 	{ value: '#24211c', label: 'Darkness' },
 	{ value: '#271254cc', label: 'Deep Purple' },
 	{ value: '#29213acc', label: 'Midnight Royal' },

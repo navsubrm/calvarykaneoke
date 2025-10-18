@@ -107,7 +107,7 @@
 							multiple={false}
 							items={languageSelectOptions}
 							themeBase={'One'}
-							bind:value={pageData.language}
+							value={pageData?.language}
 						/>
 					</div>
 
@@ -119,7 +119,18 @@
 							type={'number'}
 							required={true}
 							themeBase={'One'}
-							bind:value={pageData.content.component_height}
+							value={pageData?.content?.component_height}
+						/>
+					</div>
+					<div class="input">
+						<General
+							name="max_width"
+							label="Maximum Content Width"
+							placeholder="Enter the maximum width for content in pixels."
+							type={'number'}
+							required={true}
+							themeBase={'One'}
+							value={pageData?.content?.max_width}
 						/>
 					</div>
 				</fieldset>
@@ -129,39 +140,39 @@
 
 					<div class="input">
 						<SelectInput
-							name="background_color_base"
+							name="background_base"
 							label="Background Color"
 							placeholder="Select the background base color."
 							required={true}
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.background_color.base}
+							value={pageData?.content?.background?.base}
 						/>
 					</div>
 					<div class="input">
 						<SelectInput
-							name="background_color_upper"
+							name="background_upper"
 							label="Gradient Upper Color"
 							placeholder="Select the upper gradient color."
 							required={true}
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.background_color.upper}
+							value={pageData?.content?.background?.upper}
 						/>
 					</div>
 
 					<div class="input">
 						<SelectInput
-							name="background_color_lower"
+							name="background_lower"
 							label="Gradient Middle Color"
 							placeholder="Select the middle gradient color."
 							required={true}
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							bind:value={pageData.content.background_color.lower}
+							value={pageData?.content?.background?.lower}
 						/>
 					</div>
 				</fieldset>
@@ -178,7 +189,7 @@
 							label="Provide Upper Content"
 							placeholder="Enter the content you want displayed above the video."
 							themeBase={'One'}
-							bind:value={pageData.content.general_content.upper}
+							value={pageData?.content?.general_content?.upper}
 						/>
 					</div>
 				</fieldset>
@@ -192,7 +203,7 @@
 							label="Provide Middle Content"
 							placeholder="Enter the content you want displayed above the video."
 							themeBase={'One'}
-							bind:value={pageData.content.general_content.middle}
+							value={pageData?.content?.general_content?.middle}
 						/>
 					</div>
 				</fieldset>
@@ -205,7 +216,7 @@
 							label="Provide Lower Content"
 							placeholder="Enter the content you want displayed below the video."
 							themeBase={'One'}
-							bind:value={pageData.content.general_content.lower}
+							value={pageData?.content?.general_content?.lower}
 						/>
 					</div>
 				</fieldset>
@@ -223,7 +234,7 @@
 							type={'text'}
 							required={true}
 							themeBase={'One'}
-							bind:value={pageData.content.button.label}
+							value={pageData?.content?.button?.label}
 						/>
 					</div>
 
@@ -235,7 +246,7 @@
 							type={'text'}
 							required={true}
 							themeBase={'One'}
-							bind:value={pageData.content.button.href}
+							value={pageData?.content?.button?.href}
 						/>
 					</div>
 				</fieldset>
@@ -243,10 +254,10 @@
 
 			<details>
 				<summary>Social Footer</summary>
-				<SocialFooterInputs bind:pageData />
+				<SocialFooterInputs {pageData} />
 			</details>
 
-			<MetaDataInputs bind:pageData />
+			<MetaDataInputs pageData />
 
 			<Submit
 				{label}

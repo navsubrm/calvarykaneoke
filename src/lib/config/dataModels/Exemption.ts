@@ -8,10 +8,10 @@ export default {
 	language: 'en',
 	content: {
 		component_height: 100,
-		background_color: {
-			base: '',
-			upper: '',
-			lower: ''
+		background: {
+			upper: '#d2cbbb',
+			base: '#d2cbbb',
+			lower: '#271254cc'
 		},
 		general_content: {
 			upper: '',

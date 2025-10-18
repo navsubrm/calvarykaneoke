@@ -17,6 +17,8 @@ export const actions: Actions = {
 async function setContent({ platform, request }: RequestEvent) {
 	const formData = Object.fromEntries(await request.formData());
 
+	console.log('Form Data: ', formData);
+
 	const pageData: App.Pages = {
 		name: formData.name.toString(),
 		type: formData.type.toString(),
@@ -24,10 +26,11 @@ async function setContent({ platform, request }: RequestEvent) {
 		language: JSON.parse(formData.language.toString()).value,
 		content: JSON.stringify({
 			component_height: Number(formData?.component_height),
-			background_color: {
-				base: JSON.parse(formData?.background_color_base.toString())?.value,
-				upper: JSON.parse(formData?.background_color_upper.toString())?.value,
-				lower: JSON.parse(formData?.background_color_lower.toString())?.value
+			max_width: Number(formData?.max_width),
+			background: {
+				base: JSON.parse(formData?.background_base.toString())?.value,
+				upper: JSON.parse(formData?.background_upper.toString())?.value,
+				lower: JSON.parse(formData?.background_lower.toString())?.value
 			},
 			general_content: {
 				upper: formData?.general_content_upper.toString(),

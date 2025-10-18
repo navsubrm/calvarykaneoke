@@ -8,6 +8,8 @@
 	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
 	import SocialFooter from '$lib/components/SocialFooter/index.svelte';
 	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
+	import GradientSection from '$lib/components_style/GradientSection/Index.svelte';
+	import GeneralContent from '$lib/components_style/GeneralContent/Index.svelte';
 
 	let reset = $state(false);
 	let pageData = $state(componentDataConverter(page?.data?.page, blank));
@@ -31,88 +33,51 @@
 	});
 
 	onDestroy(() => editor?.close());
+
+	$inspect('Page data from exemption: ', pageData);
 </script>
 
 <EditorNotice bind:editor />
+<GradientSection Children={contentStyling} bind:data={pageData.content.background} />
 
-<section
-	style="--_component-height: {pageData?.content?.component_height}vh; 
-		--_background-base: {pageData?.content?.background_color?.base?.value ||
-		pageData?.content?.background_color?.base};
-		--_gradient-upper: {pageData?.content?.background_color?.upper?.value ||
-		pageData?.content?.background_color?.upper};
-		--_gradient-lower: {pageData?.content?.background_color?.lower?.value ||
-		pageData?.content?.background_color?.lower};"
->
-	<div class="content">
-		<GeneralContentBlock
-			data={pageData?.content?.general_content?.upper}
-			classes={'general-content'}
-		/>
+{#snippet contentStyling()}
+	<GeneralContent Children={content} contentWidth={pageData?.content?.max_width} />
+	{#snippet content()}
+		<div>
+			<GeneralContentBlock
+				data={pageData?.content?.general_content?.upper}
+				classes={'general-content'}
+			/>
 
-		<div class="main-button">
-			<MainButton href={pageData?.content?.button?.href} label={pageData?.content?.button?.label} />
+			<div class="main-button">
+				<MainButton
+					href={pageData?.content?.button?.href}
+					label={pageData?.content?.button?.label}
+				/>
+			</div>
+
+			<GeneralContentBlock
+				data={pageData?.content?.general_content?.middle}
+				classes={'general-content'}
+			/>
+
+			<hr />
+
+			<GeneralContentBlock
+				data={pageData?.content?.general_content?.lower}
+				classes={'general-content'}
+			/>
+
+			<SocialFooter bind:pageData />
 		</div>
-
-		<GeneralContentBlock
-			data={pageData?.content?.general_content?.middle}
-			classes={'general-content'}
-		/>
-
-		<hr />
-
-		<GeneralContentBlock
-			data={pageData?.content?.general_content?.lower}
-			classes={'general-content'}
-		/>
-
-		<SocialFooter bind:pageData />
-	</div>
-</section>
+	{/snippet}
+{/snippet}
 
 <style>
-	section {
-		position: relative;
-		--_footer-padding: 2.5em;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: var(--_footer-padding);
-		padding-top: calc(var(--_footer-padding) + 10vh);
-		min-height: fit-content;
-		height: var(--_component-height, 90vh);
-		background:
-			linear-gradient(172deg, var(--_gradient-upper) 36%, var(--_gradient-lower)),
-			var(--_background-base);
-	}
-
 	.main-button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding-block: 10vh;
-	}
-
-	.content {
-		width: 100%;
-	}
-
-	/* .general-content {
-		margin-top: 1em;
-		padding-bottom: 2em;
-	} */
-
-	@media (min-width: 600px) {
-		section {
-			--_footer-padding: 4em;
-			padding: var(--_footer-padding);
-			padding-top: calc(3em * 2);
-		}
-
-		.content {
-			width: 90%;
-			max-width: 950px;
-		}
 	}
 </style>

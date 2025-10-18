@@ -26,8 +26,8 @@
 		align-items: center;
 		padding: var(--_footer-padding);
 		padding-top: calc(var(--_footer-padding) + 10vh);
-		min-height: fit-content;
 		height: var(--_component-height, 90vh);
+		min-height: fit-content;
 		background:
 			linear-gradient(172deg, var(--_gradient-upper) 42%, var(--_gradient-lower)),
 			var(--_background-base);

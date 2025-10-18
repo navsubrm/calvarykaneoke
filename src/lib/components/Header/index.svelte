@@ -156,6 +156,8 @@
 			transform: translateX(100%);
 			transition: all 0.5s ease-in-out;
 			z-index: 100;
+			overflow-y: scroll;
+			overscroll-behavior-y: contain;
 		}
 
 		nav ul {
@@ -165,6 +167,7 @@
 			align-items: flex-start;
 			padding: 2em;
 			gap: 2em;
+			min-height: fit-content;
 		}
 
 		.active {

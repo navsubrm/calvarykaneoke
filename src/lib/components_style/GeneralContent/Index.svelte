@@ -12,6 +12,7 @@
 	div,
 	.content-style-container {
 		width: 100%;
+		min-height: fit-content;
 	}
 
 	@media (min-width: 600px) {

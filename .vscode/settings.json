@@ -1,10 +1,5 @@
 {
 	"files.associations": {
 		"wrangler.json": "jsonc"
-	},
-	"chat.mcp.serverSampling": {
-		"calvarykaneoke/.vscode/mcp.json: svelte": {
-			"allowedModels": ["copilot/gemini-2.0-flash-001"]
-		}
 	}
 }

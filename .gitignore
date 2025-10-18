@@ -8,6 +8,7 @@ node_modules
 /.svelte-kit
 /build
 /1.svelte-kit
+/testR2Files/*
 
 # OS
 .DS_Store

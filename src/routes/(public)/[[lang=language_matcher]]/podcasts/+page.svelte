@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { componentDataConverter } from '$lib/config/helperFunctions/componentDataConverter';
-	import blank from '$lib/config/dataModels/Contact';
+	import blank from '$lib/config/dataModels/Podcasts';
 	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import EditorNotice from '$lib/components/EditorNotice/index.svelte';
-	import GeneralContentBlock from '$lib/components/GeneralContentBlock/index.svelte';
 	import GradientSection from '$lib/components_style/GradientSection/Index.svelte';
 	import GeneralContent from '$lib/components_style/GeneralContent/Index.svelte';
 
@@ -31,6 +30,8 @@
 	});
 
 	onDestroy(() => editor?.close());
+
+	$inspect('R2 Object: ', page?.data?.r2Objects);
 </script>
 
 <svelte:head>
@@ -43,18 +44,34 @@
 {#snippet contentStyling()}
 	<GeneralContent Children={content} />
 	{#snippet content()}
-		<div class="main-content">
-			<GeneralContentBlock data={pageData?.content?.main_content?.main} />
-		</div>
+		<h3>Check out recent Podcasts</h3>
+		{#if page?.data?.r2Objects?.length > 0}
+			<ul>
+				{#each page?.data?.r2Objects as { key, url }}
+					<li><a href={url}>{key}</a></li>
+				{/each}
+			</ul>
+		{:else}
+			<p>Bucket is empty.</p>
+		{/if}
 	{/snippet}
 {/snippet}
 
 <style>
-	.main-content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 1.5em;
+	:global(section) {
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+
+	:global(.content-style-container) {
+		height: 100%;
+	}
+
+	ul {
+		margin-block: 1.5em;
+	}
+
+	li {
+		margin-left: 20px;
 	}
 </style>

@@ -1,3 +1,5 @@
+import { R2Bucket } from '@cloudflare/workers-types';
+
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 declare global {
@@ -37,6 +39,7 @@ declare global {
 				IS_DEV: boolean;
 				ASSETS: Fetcher;
 				NODE_ENV: string;
+				PODCASTS: R2Bucket;
 			};
 			cf: CfProperties;
 			ctx: ExecutionContext;

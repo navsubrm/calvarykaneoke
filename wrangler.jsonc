@@ -14,7 +14,8 @@
 	},
 	"vars": {
 		"IS_DEV": false,
-		"NODE_MAILER_USERNAME": "support@calvarykaneohe.church"
+		"NODE_MAILER_USERNAME": "support@calvarykaneohe.church",
+		"R2_PUBLIC_BUCKET_URL": "https://pub-2774df102b0b40a8b54a8d8acb287db4.r2.dev"
 	},
 	"observability": {
 		"enabled": true
@@ -24,6 +25,12 @@
 			"binding": "DB",
 			"database_name": "calvary_content",
 			"database_id": "b5a72b7a-2efd-4b64-94e0-2ac9fc362f32"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "PODCASTS",
+			"bucket_name": "podcasts"
 		}
 	],
 	"secrets_store_secrets": [

@@ -9,6 +9,7 @@ observability = {
 [[vars]]
 IS_DEV = 'false'
 NODE_MAILER_USERNAME='support@calvarykaneohe.church'
+R2_PUBLIC_BUCKET_URL='https://pub-2774df102b0b40a8b54a8d8acb287db4.r2.dev'
 
 [[d1_databases]]
 binding = "DB"

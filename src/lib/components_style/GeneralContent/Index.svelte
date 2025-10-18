@@ -4,17 +4,19 @@
 	let { Children }: { Children: Snippet } = $props();
 </script>
 
-<div>
+<div class="content-style-container">
 	{@render Children?.()}
 </div>
 
 <style>
-	div {
+	div,
+	.content-style-container {
 		width: 100%;
 	}
 
 	@media (min-width: 600px) {
-		div {
+		div,
+		.content-style-container {
 			width: 90%;
 			max-width: 1180px;
 		}

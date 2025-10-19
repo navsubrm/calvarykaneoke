@@ -17,7 +17,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_footer?.component_height}
+			bind:value={pageData.content.social_footer.component_height}
 		/>
 	</div>
 
@@ -30,7 +30,7 @@
 			themeBase={'One'}
 			multiple={false}
 			items={colorSelectOptions}
-			value={pageData?.content?.social_footer?.background_color}
+			bind:value={pageData.content.social_footer.background_color}
 		/>
 	</div>
 </fieldset>
@@ -46,7 +46,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_footer?.x_post_text}
+			bind:value={pageData.content.social_footer.x_post_text}
 		/>
 	</div>
 </fieldset>
@@ -61,7 +61,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_footer?.facebook_share_link}
+			bind:value={pageData.content.social_footer.facebook_share_link}
 		/>
 	</div>
 </fieldset>
@@ -76,7 +76,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_footer?.mail_to?.subject}
+			bind:value={pageData.content.social_footer.mail_to.subject}
 		/>
 	</div>
 	<div class="editor">
@@ -87,7 +87,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_footer?.mail_to?.body}
+			bind:value={pageData.content.social_footer.mail_to.body}
 		/>
 	</div>
 </fieldset>

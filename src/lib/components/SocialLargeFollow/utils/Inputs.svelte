@@ -9,20 +9,20 @@
 	function addLink(e: MouseEvent) {
 		e.preventDefault();
 		pageData.content.social_follow_large.social_links = [
-			...pageData?.content?.social_follow_large.social_links,
+			...pageData?.content?.social_follow_large?.social_links,
 			{ title: '', src: '' }
 		];
-		linkCount = pageData.content.social_follow_large.social_links.length;
+		linkCount = pageData?.content?.social_follow_large?.social_links?.length;
 	}
 
 	function deleteLink(e: MouseEvent, i: number) {
 		e.preventDefault();
 		pageData.content.social_follow_large.social_links = [
-			...pageData.content.social_follow_large.social_links.filter(
+			...pageData?.content?.social_follow_large?.social_links.filter(
 				(_: unknown, index: number) => i !== index
 			)
 		];
-		linkCount = pageData.content.social_follow_large.social_links.length;
+		linkCount = pageData?.content?.social_follow_large?.social_links?.length;
 	}
 </script>
 
@@ -37,7 +37,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow_large?.main?.size}
+			bind:value={pageData.content.social_follow_large.main.size}
 		/>
 	</div>
 
@@ -49,7 +49,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow_large?.main?.brightness}
+			bind:value={pageData.content.social_follow_large.main.brightness}
 		/>
 	</div>
 
@@ -61,7 +61,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow_large?.main?.grey_scale}
+			bind:value={pageData.content.social_follow_large.main.grey_scale}
 		/>
 	</div>
 </fieldset>

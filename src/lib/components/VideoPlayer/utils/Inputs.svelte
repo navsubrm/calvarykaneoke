@@ -14,7 +14,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.video?.title}
+			bind:value={pageData.content.video.title}
 		/>
 	</div>
 	<div class="editor">
@@ -25,7 +25,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.video?.src}
+			bind:value={pageData.content.video.src}
 		/>
 	</div>
 </fieldset>
@@ -40,7 +40,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.video?.footer?.url}
+			bind:value={pageData.content.video.footer.url}
 		/>
 	</div>
 	<div class="editor">
@@ -51,7 +51,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.video?.footer?.text}
+			bind:value={pageData.content.video.footer.text}
 		/>
 	</div>
 </fieldset>

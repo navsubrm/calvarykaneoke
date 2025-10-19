@@ -117,26 +117,26 @@
 
 			<details>
 				<summary>Hero Content</summary>
-				<HeroInputs {pageData} />
+				<HeroInputs bind:pageData />
 			</details>
 
 			<details>
 				<summary>Current Sermon Content</summary>
-				<LargeImageInputs {pageData} />
+				<LargeImageInputs bind:pageData />
 			</details>
 
 			<details>
 				<summary>Dual Content</summary>
-				<DualContentInputs {pageData} />
+				<DualContentInputs bind:pageData />
 			</details>
 
 			<!-- JD About Inputs. -->
 			<details>
 				<summary>JD About Section</summary>
-				<TriPictureInputs {pageData} />
+				<TriPictureInputs bind:pageData />
 			</details>
 
-			<MetaDataInputs {pageData} />
+			<MetaDataInputs bind:pageData />
 
 			<Submit
 				{label}

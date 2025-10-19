@@ -16,7 +16,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow?.title}
+			bind:value={pageData.content.social_follow.title}
 		/>
 	</div>
 
@@ -28,7 +28,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow?.padding_top}
+			bind:value={pageData.content.social_follow.padding_top}
 		/>
 	</div>
 </fieldset>
@@ -44,7 +44,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow?.icon?.size}
+			bind:value={pageData.content.social_follow.icon.size}
 		/>
 	</div>
 
@@ -56,7 +56,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow?.icon?.brightness}
+			bind:value={pageData.content.social_follow.icon.brightness}
 		/>
 	</div>
 
@@ -68,7 +68,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.social_follow?.icon?.grey_scale}
+			bind:value={pageData.content.social_follow.icon.grey_scale}
 		/>
 	</div>
 </fieldset>

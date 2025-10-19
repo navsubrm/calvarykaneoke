@@ -14,7 +14,7 @@
 			type={'number'}
 			required={true}
 			themeBase={'One'}
-			value={pageData.content.large_image.component_height}
+			bind:value={pageData.content.large_image.component_height}
 		/>
 	</div>
 </fieldset>
@@ -30,7 +30,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.large_image?.main_image?.href}
+			bind:value={pageData.content.large_image.main_image.href}
 		/>
 	</div>
 	<div class="editor">
@@ -41,7 +41,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.large_image?.main_image?.url}
+			bind:value={pageData.content.large_image.main_image.url}
 		/>
 	</div>
 </fieldset>
@@ -56,7 +56,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.large_image?.main_image?.alt}
+			bind:value={pageData.content.large_image.main_image.alt}
 		/>
 	</div>
 </fieldset>

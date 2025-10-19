@@ -133,7 +133,7 @@
 							type={'number'}
 							required={true}
 							themeBase={'One'}
-							value={pageData?.content?.max_width}
+							bind:value={pageData.content.max_width}
 						/>
 					</div>
 				</fieldset>

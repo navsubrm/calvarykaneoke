@@ -15,7 +15,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_church?.title}
+			bind:value={pageData.content.about_church.title}
 		/>
 	</div>
 </fieldset>
@@ -28,7 +28,7 @@
 			label="About Content"
 			placeholder="Enter the content for the about church section."
 			themeBase={'One'}
-			value={pageData?.content?.about_church?.content}
+			bind:value={pageData.content.about_church.content}
 		/>
 	</div>
 </fieldset>
@@ -44,7 +44,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_church?.image?.src}
+			bind:value={pageData.content.about_church.image.src}
 		/>
 	</div>
 	<div class="editor">
@@ -55,7 +55,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_church?.image?.alt}
+			bind:value={pageData.content.about_church.image.alt}
 		/>
 	</div>
 </fieldset>

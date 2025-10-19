@@ -194,7 +194,7 @@
 				<SocialFooterInputs bind:pageData />
 			</details>
 
-			<MetaDataInputs {pageData} />
+			<MetaDataInputs bind:pageData />
 
 			<Submit
 				{label}

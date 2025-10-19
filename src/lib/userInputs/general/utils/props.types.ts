@@ -1,4 +1,4 @@
-import type { props as message } from '$lib/components/userActions/inputs/inputMsg/utils/props.types';
+import type { props as message } from '$lib/userInputs/inputMsg/utils/props.types';
 
 export interface Props {
 	name: string;

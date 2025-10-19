@@ -2,6 +2,7 @@
 	import { setTheme } from '$lib/config/theme/setTheme';
 	import Label from '../label/Label.svelte';
 	import type { Props } from './utils/props.types';
+
 	let {
 		name,
 		label,

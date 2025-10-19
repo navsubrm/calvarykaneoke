@@ -107,7 +107,7 @@
 							multiple={false}
 							items={languageSelectOptions}
 							themeBase={'One'}
-							value={pageData?.language}
+							bind:value={pageData.language}
 						/>
 					</div>
 
@@ -119,7 +119,7 @@
 							type={'number'}
 							required={true}
 							themeBase={'One'}
-							value={pageData?.content?.component_height}
+							bind:value={pageData.content.component_height}
 						/>
 					</div>
 					<div class="input">
@@ -130,7 +130,7 @@
 							type={'number'}
 							required={true}
 							themeBase={'One'}
-							value={pageData?.content?.max_width}
+							bind:value={pageData.content.max_width}
 						/>
 					</div>
 				</fieldset>
@@ -147,7 +147,7 @@
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							value={pageData?.content?.background?.base}
+							bind:value={pageData.content.background.base}
 						/>
 					</div>
 					<div class="input">
@@ -159,7 +159,7 @@
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							value={pageData?.content?.background?.upper}
+							bind:value={pageData.content.background.upper}
 						/>
 					</div>
 
@@ -172,7 +172,7 @@
 							themeBase={'One'}
 							multiple={false}
 							items={colorSelectOptions}
-							value={pageData?.content?.background?.lower}
+							bind:value={pageData.content.background.lower}
 						/>
 					</div>
 				</fieldset>
@@ -189,7 +189,7 @@
 							label="Provide Upper Content"
 							placeholder="Enter the content you want displayed above the video."
 							themeBase={'One'}
-							value={pageData?.content?.general_content?.upper}
+							bind:value={pageData.content.general_content.upper}
 						/>
 					</div>
 				</fieldset>
@@ -203,7 +203,7 @@
 							label="Provide Middle Content"
 							placeholder="Enter the content you want displayed above the video."
 							themeBase={'One'}
-							value={pageData?.content?.general_content?.middle}
+							bind:value={pageData.content.general_content.middle}
 						/>
 					</div>
 				</fieldset>
@@ -216,7 +216,7 @@
 							label="Provide Lower Content"
 							placeholder="Enter the content you want displayed below the video."
 							themeBase={'One'}
-							value={pageData?.content?.general_content?.lower}
+							bind:value={pageData.content.general_content.lower}
 						/>
 					</div>
 				</fieldset>
@@ -234,7 +234,7 @@
 							type={'text'}
 							required={true}
 							themeBase={'One'}
-							value={pageData?.content?.button?.label}
+							bind:value={pageData.content.button.label}
 						/>
 					</div>
 
@@ -246,7 +246,7 @@
 							type={'text'}
 							required={true}
 							themeBase={'One'}
-							value={pageData?.content?.button?.href}
+							bind:value={pageData.content.button.href}
 						/>
 					</div>
 				</fieldset>
@@ -254,10 +254,10 @@
 
 			<details>
 				<summary>Social Footer</summary>
-				<SocialFooterInputs {pageData} />
+				<SocialFooterInputs bind:pageData />
 			</details>
 
-			<MetaDataInputs pageData />
+			<MetaDataInputs bind:pageData />
 
 			<Submit
 				{label}

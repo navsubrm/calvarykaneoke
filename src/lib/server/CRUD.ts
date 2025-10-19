@@ -80,7 +80,6 @@ export async function queryNewestRecordByPage(
 		LIMIT 1`
 	).run();
 
-	console.log('Newest result: ', newest);
 	if (newest?.success && newest?.results?.length == 0 && language !== 'en')
 		return queryNewestRecordByPage(platform, name, 'en');
 

@@ -15,7 +15,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_image?.title}
+			bind:value={pageData.content.about_image.title}
 		/>
 	</div>
 </fieldset>
@@ -28,7 +28,7 @@
 			label="About Content"
 			placeholder="Enter the content for the about JD section."
 			themeBase={'One'}
-			value={pageData?.content?.about_image?.content}
+			bind:value={pageData.content.about_image.content}
 		/>
 	</div>
 </fieldset>
@@ -44,7 +44,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_image?.image?.src}
+			bind:value={pageData.content.about_image.image.src}
 		/>
 	</div>
 	<div class="editor">
@@ -55,7 +55,7 @@
 			type={'text'}
 			required={true}
 			themeBase={'One'}
-			value={pageData?.content?.about_image?.image?.alt}
+			bind:value={pageData.content.about_image.image.alt}
 		/>
 	</div>
 </fieldset>

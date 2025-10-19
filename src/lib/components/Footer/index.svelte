@@ -27,11 +27,7 @@
 	function googleTranslateElementInit() {
 		console.log('Ran Init');
 		new google.translate.TranslateElement(
-			{
-				pageLanguage: 'en',
-				//layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-				includedLanguages: 'en,es,nl,fr,de,ja,pt,ro'
-			},
+			{ pageLanguage: 'en', includedLanguages: 'en,es,nl,fr,de,ja,pt,ro' },
 			'google_translate_element'
 		);
 	}
